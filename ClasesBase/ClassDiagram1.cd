@@ -22,14 +22,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="ClasesBase.Ticket">
-    <Position X="2.75" Y="2.5" Width="1.5" />
+    <Position X="3.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAQAAAAAgAAAAAAAAAAABAAAABQCIAAIAAAgQAAAA=</HashCode>
       <FileName>Ticket.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ClasesBase.Usuario">
-    <Position X="4.5" Y="0.5" Width="1.5" />
+    <Position X="5.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAEAAAAgAAAAAAAAgACAQAAAAAAAAA=</HashCode>
       <FileName>Usuario.cs</FileName>
