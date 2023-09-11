@@ -1,0 +1,41 @@
+# Carpeta de binarios y ejecutables
+bin/
+obj/
+
+# Archivos de configuración de Visual Studio
+.vscode/
+.vs/
+*.suo
+*.user
+*.sln.docstates
+
+# Archivos de respaldo
+*~
+*.bak
+
+# Archivos temporales
+*.log
+*.log.*
+*.tmp
+
+# Archivos de usuario específicos de Visual Studio
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Archivos de caché
+[Bb]in/
+[Ii]ntermediate/
+[Pp]ackages/
+[Tt]est[Rr]esults/
+_nuget/
+*.dll
+*.pdb
+*.cache
+*.suo
+*.user
+*.sln.docstates
+*.log
+*.vscode/
+*.vs
