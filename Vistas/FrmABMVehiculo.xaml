@@ -1,0 +1,88 @@
+﻿<Window x:Class="Vistas.FrmABMVehiculo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="FrmABMVehiculo" Height="710" Width="432"
+        AllowsTransparency="True" Background="Transparent"
+        WindowStyle="None" ResizeMode="NoResize">
+    <Window.Resources>
+        <SolidColorBrush x:Key="ColorFondoBoton" Color="#D5AAFF"/>
+    </Window.Resources>
+
+    <Grid>
+        <Grid>
+            
+            <Border CornerRadius="10">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#7be9f6" Offset="0.0"/>
+                        <GradientStop Color="#f083da" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>  
+            </Border>
+            
+            <StackPanel Orientation="Horizontal" Height="671" VerticalAlignment="Top">
+               
+                <Button Name="btn_MesasDinamicas"
+                        Width="142" 
+                        Height="46" 
+                        FontWeight="Bold"
+                        FontFamily="Book Antiqua"
+                        FontSize="18"
+                        Background="{StaticResource ColorFondoBoton}"
+                        Content="Generar Mesas" 
+                        Margin="10,-90,0,400" Click="btn_MesasDinamicas_Click"></Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="214,548,6,0" Height="59" VerticalAlignment="Top">
+                <Border 
+                    Background="Red" 
+                    Height="33" 
+                    Name="borOcu" 
+                    Width="83"/>
+                <Label Name="Ocu"
+                       Content="Ocupado" 
+                       FontFamily="Book Antiqua" 
+                       FontSize="16" 
+                       FontWeight="Bold" 
+                       Height="36"  
+                       Width="86" />
+                
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10,607,202,0">
+                <Border 
+                    Background="Gray" 
+                    Height="33" 
+                    Name="borDesa" 
+                    Width="83"/>
+                <Label Name="Desa"
+                       Content="Desabilitado" 
+                       FontFamily="Book Antiqua" 
+                       FontSize="16" 
+                       FontWeight="Bold" 
+                       Height="40"
+                       Width="120" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="240,607,6,10">
+                <Button 
+                        Content="Salir" 
+                        Width="165" 
+                        Height="46" 
+                        FontWeight="Bold"
+                        FontFamily="Book Antiqua"
+                        FontSize="20"
+                        Background="{StaticResource ColorFondoBoton}" Click="Button_Click">
+                </Button>
+            </StackPanel>
+            <!--MESAS-->
+
+            <Grid Name="grdMesas" DockPanel.Dock="Top" Margin="0,104,0,129">
+                <StackPanel Orientation="Horizontal" Margin="10,452,218,-66">
+                    <Border Background="Green" Height="33" Name="borDis" Width="83" />
+                    <Label Name="Dispo" Content="Disponible" Height="38" Width="103" FontSize="16" FontWeight="Bold" FontFamily="Book Antiqua" />
+                </StackPanel>
+            </Grid>
+        </Grid>
+        <StackPanel Margin="97,12,80,624">
+            <Label Content="Vehículos en Playa" Height="35" Name="label1" Width="197" FontWeight="Bold" FontFamily="Book Antiqua" FontSize="20" />
+        </StackPanel>
+    </Grid>
+</Window>
