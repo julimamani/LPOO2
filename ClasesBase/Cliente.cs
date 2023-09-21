@@ -7,48 +7,22 @@ namespace ClasesBase
 {
     public class Cliente
     {
-        public int ClienteDNI
+        public int ClienteDNI { get; set; }
+        public string Apellido { get; set; }
+        public string Nombre { get; set; }
+        public string Telefono { get; set; }
+
+        public Cliente(int clienteDNI, string apellido, string nombre, string telefono)
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            ClienteDNI = clienteDNI;
+            Apellido = apellido;
+            Nombre = nombre;
+            Telefono = telefono;
         }
 
-        public string Apellido
+        public Cliente()
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
 
-        public string Nombre
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
-        public string Telefono
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
         }
     }
 }
