@@ -1,0 +1,33 @@
+﻿<Window x:Class="Vistas.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Mi Aplicación" Height="400" Width="600">
+    <Grid>
+        <!-- Barra de Menú -->
+        <Menu>
+            <MenuItem Header="_Archivo">
+                <MenuItem Header="_Abrir"/>
+                <MenuItem Header="_Guardar"/>
+                <Separator/>
+                <MenuItem Header="_Salir"/>
+            </MenuItem>
+            <MenuItem Header="_Editar">
+                <MenuItem Header="_Cortar"/>
+                <MenuItem Header="_Copiar"/>
+                <MenuItem Header="_Pegar"/>
+            </MenuItem>
+        </Menu>
+
+        <!-- Contenido Principal -->
+        <Grid>
+            <!-- Título de la Aplicación -->
+            <TextBlock Text="Gestion: Playa de Estacionamiento" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" FontSize="20" DataContext="{Binding}" FontWeight="Bold" />
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button Content="Gestión de Sectores" Name="btnGestionSectores" Click="btnGestionSectores_Click" IsEnabled="False"/>
+                <Button Content="Gestión de Tipos de Vehículo" Name="btnGestionTiposVehiculo" Click="btnGestionTiposVehiculo_Click" IsEnabled="False"/>
+                <Button Content="Gestión de Clientes" Name="btnGestionClientes" Click="btnGestionClientes_Click" IsEnabled="False"/>
+                <Button Content="Gestión de Estacionamiento" Name="btnGestionEstacionamiento" Click="btnGestionEstacionamiento_Click" IsEnabled="False"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+    </Window>
