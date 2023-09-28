@@ -22,7 +22,7 @@
             
             <StackPanel Orientation="Horizontal" Height="671" VerticalAlignment="Top">
                
-                <Button Name="btn_MesasDinamicas"
+                <Button Name="btn_Vehiculo"
                         Width="142" 
                         Height="46" 
                         FontWeight="Bold"
@@ -30,7 +30,7 @@
                         FontSize="18"
                         Background="{StaticResource ColorFondoBoton}"
                         Content="Generar Mesas" 
-                        Margin="10,-90,0,400" Click="btn_MesasDinamicas_Click"></Button>
+                        Margin="10,-90,0,400" Click="btn_Vehiculo_Click"></Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="214,548,6,0" Height="59" VerticalAlignment="Top">
                 <Border 
@@ -69,7 +69,7 @@
                         FontWeight="Bold"
                         FontFamily="Book Antiqua"
                         FontSize="20"
-                        Background="{StaticResource ColorFondoBoton}" Click="Button_Click">
+                        Background="{StaticResource ColorFondoBoton}" Click="Salir_Click">
                 </Button>
             </StackPanel>
             <!--MESAS-->

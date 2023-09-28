@@ -18,11 +18,11 @@ namespace Vistas
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Login : Window
     {
         private Usuario admin;
         private Usuario operador;
-        public MainWindow()
+        public Login()
         {
             InitializeComponent();
             inicializarUsuarios();

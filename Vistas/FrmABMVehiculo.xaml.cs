@@ -29,7 +29,7 @@ namespace Vistas
 
         }
 
-        private void click_control(object sender, RoutedEventArgs e)
+        private void cuadro_Click(object sender, RoutedEventArgs e)
         {
             Button botonActual = (Button)sender;
 
@@ -41,7 +41,7 @@ namespace Vistas
                 MessageBox.Show("Sector deshabilitado");
         }
 
-        private void btn_MesasDinamicas_Click(object sender, RoutedEventArgs e)
+        private void btn_Vehiculo_Click(object sender, RoutedEventArgs e)
         {
             var wrap = new WrapPanel();
 
@@ -60,7 +60,7 @@ namespace Vistas
                 boton.Margin = new Thickness(20, 20, 20, 10);
                 boton.Name = "btn_" + i;
                 boton.Content = "E: " + i;
-                boton.Click += new RoutedEventHandler(click_control);
+                boton.Click += new RoutedEventHandler(cuadro_Click);
                 
                 wrap.Children.Add(boton);
 
@@ -88,7 +88,7 @@ namespace Vistas
             wrap.Margin = new Thickness(10, 0,-250,10);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Salir_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

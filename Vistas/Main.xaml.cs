@@ -17,12 +17,14 @@ namespace Vistas
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Main : Window
 {
-    public MainWindow(string rol)
+    public Main()
     {
         InitializeComponent();
+    }
 
+    public Main(string rol){
         if (rol == "Admin")
         {
             // Habilitar funciones de gestión de Sectores , Tipos de Vehículo , gestión de Clientes y gestión de Estacionamiento
@@ -37,6 +39,26 @@ namespace Vistas
             btnGestionClientes.IsEnabled = true;
             btnGestionEstacionamiento.IsEnabled = true;
         }
+    }
+
+    private void btnGestionSectores_Click(object sender, RoutedEventArgs e)
+    {
+
+    }
+
+    private void btnGestionTiposVehiculo_Click(object sender, RoutedEventArgs e)
+    {
+
+    }
+
+    private void btnGestionClientes_Click(object sender, RoutedEventArgs e)
+    {
+
+    }
+
+    private void btnGestionEstacionamiento_Click(object sender, RoutedEventArgs e)
+    {
+
     }
 }
 }
