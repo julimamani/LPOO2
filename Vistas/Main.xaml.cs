@@ -25,13 +25,14 @@ namespace Vistas
     }
 
     public Main(string rol){
+        InitializeComponent();
         if (rol == "Admin")
         {
             // Habilitar funciones de gestión de Sectores , Tipos de Vehículo , gestión de Clientes y gestión de Estacionamiento
             btnGestionSectores.IsEnabled = true;
             btnGestionTiposVehiculo.IsEnabled = true;
-            btnGestionClientes.IsEnabled = true;
-            btnGestionEstacionamiento.IsEnabled = true;
+            //btnGestionClientes.IsEnabled = true;
+           // btnGestionEstacionamiento.IsEnabled = true;
         }
         else if (rol == "Operador")
         {

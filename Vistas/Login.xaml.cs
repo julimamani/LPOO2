@@ -22,6 +22,7 @@ namespace Vistas
     {
         private Usuario admin;
         private Usuario operador;
+        private Main main;
         public Login()
         {
             InitializeComponent();
@@ -36,11 +37,18 @@ namespace Vistas
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-            if ((textUser.Text == admin.UserName && passBox.Password == admin.Password) || (textUser.Text == operador.UserName && passBox.Password == operador.Password))
+            if (textUser.Text == admin.UserName && passBox.Password == admin.Password)
             {
                 MessageBox.Show("Usuario o contraseña correcta", "INFO", MessageBoxButton.OK);
+                main = new Main("Admin");
+                main.Show();
+                this.Hide();
             }
-            else {
+            else if (textUser.Text == operador.UserName && passBox.Password == operador.Password) {
+                main = new Main("Operador");
+                main.Show();
+                this.Hide();
+            }else {
                 MessageBox.Show("Usuario o contraseña incorrecta", "ERROR", MessageBoxButton.OK);
             }
         }
