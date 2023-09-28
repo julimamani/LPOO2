@@ -7,37 +7,19 @@ namespace ClasesBase
 {
     public class TipoVehiculo
     {
-        public int TVCodigo
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public int TVCodigo { get; set; }
+        public string Descripcion { get; set; }
+        public decimal Tarifa { get; set; }
 
-        public string Descripcion
+        public TipoVehiculo(int tvCodigo, string descripcion, decimal tarifa)
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            TVCodigo = tvCodigo;
+            Descripcion = descripcion;
+            Tarifa = tarifa;
         }
-
-        public decimal Tarifa
+        public TipoVehiculo()
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+     
         }
     }
 }
