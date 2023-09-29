@@ -47,7 +47,7 @@ namespace Vistas
             else if (textUser.Text == operador.UserName && passBox.Password == operador.Password) {
                 main = new Main("Operador");
                 main.Show();
-                this.Hide();
+                this.Close();
             }else {
                 MessageBox.Show("Usuario o contraseña incorrecta", "ERROR", MessageBoxButton.OK);
             }

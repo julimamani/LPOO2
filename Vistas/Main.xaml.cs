@@ -49,17 +49,25 @@ namespace Vistas
 
     private void btnGestionTiposVehiculo_Click(object sender, RoutedEventArgs e)
     {
-
+        Principal.Content = new ABMtipoVehiculo();
     }
 
     private void btnGestionClientes_Click(object sender, RoutedEventArgs e)
     {
+        Principal.Content = new ABMcliente();
 
     }
 
     private void btnGestionEstacionamiento_Click(object sender, RoutedEventArgs e)
     {
 
+    }
+
+    private void btnAtras_Click(object sender, RoutedEventArgs e)
+    {
+        Login login = new Login();
+        this.Close();
+        login.Show();
     }
 }
 }
