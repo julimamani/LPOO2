@@ -52,5 +52,10 @@ namespace Vistas
                 MessageBox.Show("Usuario o contraseña incorrecta", "ERROR", MessageBoxButton.OK);
             }
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

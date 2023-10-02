@@ -5,7 +5,11 @@
         AllowsTransparency="True" Background="Transparent"
         WindowStyle="None" ResizeMode="NoResize">
     <Grid>
-        <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="110*" />
+            <ColumnDefinition Width="248*" />
+        </Grid.ColumnDefinitions>
+        <Grid Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -84,10 +88,13 @@
 
                 <StackPanel Orientation="Horizontal" Margin="0,50,0,0">
                     <Button Width="100" Height="40" Content="INGRESAR" Margin="130,0,0,0" Click="Button_Click" />
-             
                 </StackPanel>
-
             </StackPanel>
         </Grid>
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="215,0,0,386">
+            <Button Width="29" Height="19" Margin="0,0,0,0" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Padding="0" Click="Button_Click_1">
+                <Image Source="Imagenes/exit.png" Stretch="Uniform" Height="19" Width="29"></Image>
+            </Button>
+        </StackPanel>
     </Grid>
 </Window>
