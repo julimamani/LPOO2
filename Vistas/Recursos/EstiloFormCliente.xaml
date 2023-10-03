@@ -1,0 +1,32 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Estilo para botones -->
+    <Style x:Key="BotonPersonalizado" TargetType="Button">
+        <Setter Property="Background" Value="#E53EC3"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontFamily" Value="Montserrat"/>
+        <Setter Property="Grid.Column" Value="2"/>
+        <Setter Property="Padding" Value="10,5"/>
+    </Style>
+
+    <Style x:Key="TextTitulo" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="FontFamily" Value="Montserrat"/>
+    </Style>
+    
+    <Style x:Key="TextInput" TargetType="TextBox" >
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="FontFamily" Value="Montserrat"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="CaretBrush" Value="LightGray"/>
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+        <Setter Property="Height" Value="28"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="0,5,0,0"/>
+    </Style>
+</ResourceDictionary>
