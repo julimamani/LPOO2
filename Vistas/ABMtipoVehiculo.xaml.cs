@@ -20,31 +20,74 @@ namespace Vistas
     /// </summary>
     public partial class ABMtipoVehiculo : Page
     {
+
+        TipoVehiculo tipoVehiculo = new TipoVehiculo();
+
         public ABMtipoVehiculo()
         {
             InitializeComponent();
         }
-         private void GuardarTipoVehiculo_Click(object sender, RoutedEventArgs e)
+
+        private Boolean form_Completo()
         {
-            // Crear una instancia de TipoVehiculo y asignar los valores ingresados
-            TipoVehiculo tipoVehiculo = new TipoVehiculo
-            {
-                TVCodigo = int.Parse(txtCodigo.Text),
-                Descripcion = txtDescripcion.Text,
-                Tarifa = decimal.Parse(txtTarifa.Text)
-            };
+            MessageBoxResult Result;
 
-            // Muestra un cuadro de diálogo de confirmación antes de guardar
-            MessageBoxResult result = MessageBox.Show("¿Estás seguro de guardar?", "Confirmación", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            Result = MessageBox.Show("¿Quiere guardar los datos?", "Confirmación ", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (Result == MessageBoxResult.Yes)
+                return true;
+            else
+                return false;
+        }
 
-            if (result == MessageBoxResult.Yes)
+        private void cargarDatos()
+        {
+            tipoVehiculo.TVCodigo = txtCodigo.Text;
+            tipoVehiculo.Descripcion = txtDescripcion.Text;
+            tipoVehiculo.Tarifa = txtTarifa.Text;
+        }
+
+        private bool controlDatos()
+        {
+            if (txtCodigo.Text == "" || txtDescripcion.Text == "" || txtTarifa.Text == "")
+                return false;
+            else
+                return true;
+        }
+
+        private void limpiarForm()
+        {
+            txtCodigo.Text = string.Empty;
+            txtDescripcion.Text = string.Empty;
+            txtTarifa.Text = string.Empty;
+
+        }
+
+        private void GuardarTipoVehiculo_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (form_Completo() == true)
             {
-                // Guarda los datos (puedes implementar esta parte según tus necesidades)
-                // En este ejemplo, solo mostramos un MessageBox después de la confirmación
-                MessageBox.Show("Tipo de vehículo guardado con éxito.");
-                MessageBox.Show("Código del Vehículo: " + tipoVehiculo.TVCodigo + "\nDescripción del Vehículo: " + tipoVehiculo.Descripcion + "\nTarifa del Vehículo: " + tipoVehiculo.Tarifa);
+                if (controlDatos() == true)
+                {
+                    cargarDatos();
+                    //MessageBox.Show("Nombre guardado: " + cliente.Cli_Nombre);
+                    string resultado = "Código del Vehículo: " + tipoVehiculo.TVCodigo + "\n" +
+                                       "Descripción del Vehículo: " + tipoVehiculo.Descripcion + "\n" +
+                                       "Tarifa del Vehículo: " + tipoVehiculo.Tarifa + "\n";
+
+
+                     // Guarda los datos (puedes implementar esta parte según tus necesidades)
+                        // En este ejemplo, solo mostramos un MessageBox después de la confirmación
+                     MessageBox.Show("Tipo de vehículo guardado con éxito.");
+                    MessageBox.Show("Código del Vehículo: " + tipoVehiculo.TVCodigo + "\nDescripción del Vehículo: " + tipoVehiculo.Descripcion + "\nTarifa del Vehículo: " + tipoVehiculo.Tarifa);
+                    MessageBox.Show(resultado, "Datos: ", MessageBoxButton.OK, MessageBoxImage.Information);
+                    limpiarForm();
+                }
+                else
+                {
+                    MessageBox.Show("TODOS LOS CAMPOS DEBEN ESTAR CARGADOS", "Aviso", MessageBoxButton.OK);
+                }
             }
-           
         }
     }
 }

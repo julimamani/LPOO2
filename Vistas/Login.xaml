@@ -92,7 +92,11 @@
             </StackPanel>
         </Grid>
         <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="215,0,0,386">
-            <Button Width="29" Height="19" Margin="0,0,0,0" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Padding="0" Click="Button_Click_1">
+            <Button Width="29" Height="19" Margin="0,0,0,0" Background="Transparent" 
+                    BorderBrush="Transparent" 
+                    BorderThickness="0" 
+                    Padding="0" 
+                    Click="btnSalir_Click">
                 <Image Source="Imagenes/exit.png" Stretch="Uniform" Height="19" Width="29"></Image>
             </Button>
         </StackPanel>

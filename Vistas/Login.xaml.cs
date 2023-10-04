@@ -53,9 +53,15 @@ namespace Vistas
             }
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void btnSalir_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            {
+                MessageBoxResult Result;
+
+                Result = MessageBox.Show("¿Está seguro que desea salir?", "Confirmación", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (Result == MessageBoxResult.Yes)
+                    Application.Current.Shutdown();
+            }
         }
     }
 }

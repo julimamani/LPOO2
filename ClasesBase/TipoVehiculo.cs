@@ -7,11 +7,11 @@ namespace ClasesBase
 {
     public class TipoVehiculo
     {
-        public int TVCodigo { get; set; }
+        public string TVCodigo { get; set; }
         public string Descripcion { get; set; }
-        public decimal Tarifa { get; set; }
+        public string Tarifa { get; set; }
 
-        public TipoVehiculo(int tvCodigo, string descripcion, decimal tarifa)
+        public TipoVehiculo(string tvCodigo, string descripcion, string tarifa)
         {
             TVCodigo = tvCodigo;
             Descripcion = descripcion;

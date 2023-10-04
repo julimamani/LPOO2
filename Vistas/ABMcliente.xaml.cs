@@ -20,30 +20,75 @@ namespace Vistas
     /// </summary>
     public partial class ABMcliente : Page
     {
+        Cliente cliente = new Cliente();
+
         public ABMcliente()
         {
             InitializeComponent();
         }
+
+        private Boolean form_Completo()
+        {
+            MessageBoxResult Result;
+
+            Result = MessageBox.Show("¿Quiere guardar los datos?", "Confirmación ", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (Result == MessageBoxResult.Yes)
+                return true;
+            else
+                return false;
+        }
+
+        private void cargarDatos()
+        {
+            cliente.ClienteDNI = int.Parse(txtDNI.Text);
+            cliente.Apellido = txtApellido.Text;
+            cliente.Nombre = txtNombre.Text;
+            cliente.Telefono = txtTelefono.Text;
+        }
+
+        private bool controlDatos()
+        {
+            if (txtDNI.Text == "" || txtApellido.Text == "" || txtNombre.Text == "" || txtTelefono.Text == "")
+                return false;
+            else
+                return true;
+        }
+
+        private void limpiarForm()
+        {
+            txtDNI.Text = string.Empty;
+            txtApellido.Text = string.Empty;
+            txtNombre.Text = string.Empty;
+            txtTelefono.Text = string.Empty;
+
+        }
+
+
         private void GuardarCliente_Click(object sender, RoutedEventArgs e)
         {
-            // Crear una instancia de Cliente y asignar los valores ingresados
-            Cliente cliente = new Cliente
+            if (form_Completo() == true)
             {
-                ClienteDNI = int.Parse(txtDNI.Text),
-                Apellido = txtApellido.Text,
-                Nombre = txtNombre.Text,
-                Telefono = txtTelefono.Text
-            };
+                if (controlDatos() == true)
+                {
+                    cargarDatos();
+                    //MessageBox.Show("Nombre guardado: " + cliente.Cli_Nombre);
+                    string resultado = "DNI del Cliente: " + cliente.ClienteDNI + "\n" +
+                                       "Apellido del Cliente: " + cliente.Apellido + "\n" +
+                                       "Nombre del Cliente: " + cliente.Nombre + "\n" +
+                                       "Teléfono del Cliente: " + cliente.Telefono;
 
-            // Muestra un cuadro de diálogo de confirmación antes de guardar
-            MessageBoxResult result = MessageBox.Show("¿Estás seguro de guardar?", "Confirmación", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
-            if (result == MessageBoxResult.Yes)
-            {
-                // Guarda los datos (puedes implementar esta parte según tus necesidades)
-                // En este ejemplo, solo mostramos un MessageBox después de la confirmación
-                MessageBox.Show("Cliente guardado con éxito.");
-                MessageBox.Show("DNI del Cliente: " + cliente.ClienteDNI + "\nApellido del Cliente: " + cliente.Apellido + "\nNombre del Cliente: " + cliente.Nombre + "\nTeléfono del Cliente: " + cliente.Telefono);
+                    // Guarda los datos (puedes implementar esta parte según tus necesidades)
+                    // En este ejemplo, solo mostramos un MessageBox después de la confirmación
+                    MessageBox.Show("Cliente guardado con éxito.");
+                    MessageBox.Show("DNI del Cliente: " + cliente.ClienteDNI + "\nApellido del Cliente: " + cliente.Apellido + "\nNombre del Cliente: " + cliente.Nombre + "\nTeléfono del Cliente: " + cliente.Telefono);
+                    MessageBox.Show(resultado, "Datos: ", MessageBoxButton.OK, MessageBoxImage.Information);
+                    limpiarForm();
+                }
+                else
+                {
+                    MessageBox.Show("TODOS LOS CAMPOS DEBEN ESTAR CARGADOS", "Aviso", MessageBoxButton.OK);
+                }
             }
         }
     }

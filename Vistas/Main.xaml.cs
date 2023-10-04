@@ -18,56 +18,58 @@ namespace Vistas
     /// Interaction logic for Window1.xaml
     /// </summary>
     public partial class Main : Window
-{
-    public Main()
     {
-        InitializeComponent();
-    }
-
-    public Main(string rol){
-        InitializeComponent();
-        if (rol == "Admin")
+        public Main()
         {
-            // Habilitar funciones de gestión de Sectores , Tipos de Vehículo , gestión de Clientes y gestión de Estacionamiento
-            btnGestionSectores.IsEnabled = true;
-            btnGestionTiposVehiculo.IsEnabled = true;
-            //btnGestionClientes.IsEnabled = true;
-           // btnGestionEstacionamiento.IsEnabled = true;
+            InitializeComponent();
         }
-        else if (rol == "Operador")
+
+        public Main(string rol)
         {
-            // Habilitar funciones de gestión de Clientes y Gestión de Estacionamiento
-            btnGestionClientes.IsEnabled = true;
-            btnGestionEstacionamiento.IsEnabled = true;
+            InitializeComponent();
+            if (rol == "Admin")
+            {
+                // Habilitar funciones de gestión de Sectores , Tipos de Vehículo , gestión de Clientes y gestión de Estacionamiento
+                btnGestionSectores.IsEnabled = true;
+                btnGestionTiposVehiculo.IsEnabled = true;
+                //btnGestionClientes.IsEnabled = true;
+                // btnGestionEstacionamiento.IsEnabled = true;
+            }
+            else if (rol == "Operador")
+            {
+                // Habilitar funciones de gestión de Clientes y Gestión de Estacionamiento
+                btnGestionClientes.IsEnabled = true;
+                btnGestionEstacionamiento.IsEnabled = true;
+            }
         }
+
+        private void btnGestionSectores_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnGestionTiposVehiculo_Click(object sender, RoutedEventArgs e)
+        {
+            Principal.Content = new ABMtipoVehiculo();
+        }
+
+        private void btnGestionClientes_Click(object sender, RoutedEventArgs e)
+        {
+            Principal.Content = new ABMcliente();
+
+        }
+
+        private void btnGestionEstacionamiento_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnAtras_Click(object sender, RoutedEventArgs e)
+        {
+            Login login = new Login();
+            this.Close();
+            login.Show();
+        }
+
     }
-
-    private void btnGestionSectores_Click(object sender, RoutedEventArgs e)
-    {
-
-    }
-
-    private void btnGestionTiposVehiculo_Click(object sender, RoutedEventArgs e)
-    {
-        Principal.Content = new ABMtipoVehiculo();
-    }
-
-    private void btnGestionClientes_Click(object sender, RoutedEventArgs e)
-    {
-        Principal.Content = new ABMcliente();
-
-    }
-
-    private void btnGestionEstacionamiento_Click(object sender, RoutedEventArgs e)
-    {
-
-    }
-
-    private void btnAtras_Click(object sender, RoutedEventArgs e)
-    {
-        Login login = new Login();
-        this.Close();
-        login.Show();
-    }
-}
 }
