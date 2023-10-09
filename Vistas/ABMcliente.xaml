@@ -13,6 +13,13 @@
     </Page.Resources>
 
     <Grid>
+        <Grid.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <ResourceDictionary Source="Recursos/EstiloFormCliente.xaml" />
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+        </Grid.Resources>
         <Grid>
             <!-- Encabezado -->
             <Grid.RowDefinitions>
@@ -22,7 +29,7 @@
                 <!-- Contenido -->
             </Grid.RowDefinitions>
 
-            <Border CornerRadius="10">
+            <Border CornerRadius="10" Grid.RowSpan="2">
                 <Border.Background>
                     <LinearGradientBrush>
                         <GradientStop Color="#7be9f6" Offset="0.0"/>
@@ -31,35 +38,35 @@
                 </Border.Background>
             </Border>
 
-            <StackPanel VerticalAlignment="Center">
+            <StackPanel VerticalAlignment="Center" Height="92">
                 <Image Source="Imagenes/Logo.png" Width="80"/>
             </StackPanel>
 
             <!-- Contenido de la página -->
             <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <TextBlock Text="Formulario de Cliente" FontWeight="Bold" FontSize="18" Margin="0,0,0,20"/>
+                <TextBlock Text="Formulario de Cliente"  FontSize="20" Margin="0,0,0,20" Style="{StaticResource TextTitulo}"/>
 
                 <StackPanel Margin="0,0,0,10" HorizontalAlignment="Center">
-                    <TextBlock Text="DNI:" FontWeight="Bold"/>
-                    <TextBox Name="txtDNI" Width="200" />
+                    <TextBlock Text="DNI:" Style="{StaticResource TextTitulo}"/>
+                    <TextBox Name="txtDNI" Width="200" Style="{StaticResource TextInput}"/>
                 </StackPanel>
 
                 <StackPanel Margin="0,0,0,10" HorizontalAlignment="Center">
-                    <TextBlock Text="Apellido:" FontWeight="Bold"/>
-                    <TextBox Name="txtApellido" Width="200" />
+                    <TextBlock Text="Apellido:" Style="{StaticResource TextTitulo}"/>
+                    <TextBox Name="txtApellido" Width="200" Style="{StaticResource TextInput}"/>
                 </StackPanel>
 
                 <StackPanel Margin="0,0,0,10" HorizontalAlignment="Center">
-                    <TextBlock Text="Nombre:" FontWeight="Bold"/>
-                    <TextBox Name="txtNombre" Width="200" />
+                    <TextBlock Text="Nombre:" Style="{StaticResource TextTitulo}"/>
+                    <TextBox Name="txtNombre" Width="200" Style="{StaticResource TextInput}"/>
                 </StackPanel>
 
                 <StackPanel Margin="0,0,0,10" HorizontalAlignment="Center">
-                    <TextBlock Text="Teléfono:" FontWeight="Bold"/>
-                    <TextBox Name="txtTelefono" Width="200" />
+                    <TextBlock Text="Teléfono:" Style="{StaticResource TextTitulo}"/>
+                    <TextBox Name="txtTelefono" Width="200" Style="{StaticResource TextInput}" />
                 </StackPanel>
 
-                <Button Content="Guardar" Width="100" Click="GuardarCliente_Click"/>
+                <Button Content="Guardar" Width="100" Click="GuardarCliente_Click" Style="{StaticResource BotonPersonalizado}"/>
             </StackPanel>
         </Grid>
     </Grid>
