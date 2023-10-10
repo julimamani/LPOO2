@@ -89,5 +89,20 @@ namespace Vistas
                 }
             }
         }
+        private void ModificarTipoVehiculo_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void EliminarTipoVehiculo_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        private void LimpiarForm_Click(object sender, RoutedEventArgs e)
+        {
+            limpiarForm();
+        }
+
     }
 }

@@ -4,11 +4,21 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
-	  Title="ABMtipoVehiculo"
-      >
+      d:DesignHeight="475" d:DesignWidth="296"
+	  Title="ABMtipoVehiculo">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Recursos/EstilosBotones.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
     <Grid>
         <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="126*" />
+                <ColumnDefinition Width="170*" />
+            </Grid.ColumnDefinitions>
             <!-- Encabezado -->
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -17,7 +27,7 @@
                 <!-- Contenido -->
             </Grid.RowDefinitions>
 
-            <Border CornerRadius="10">
+            <Border CornerRadius="10" Grid.ColumnSpan="2">
                 <Border.Background>
                     <LinearGradientBrush>
                         <GradientStop Color="#7be9f6" Offset="0.0"/>
@@ -26,11 +36,11 @@
                 </Border.Background>
             </Border>
 
-            <StackPanel VerticalAlignment="Center">
+            <StackPanel VerticalAlignment="Center" Grid.ColumnSpan="2">
                 <Image Source="Imagenes/Logo.png" Width="80"/>
             </StackPanel>
 
-            <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="253" Margin="31,40,31,90" Grid.ColumnSpan="2">
                 <TextBlock Text="Ingrese de Tipo de Vehículo" FontWeight="Bold" FontSize="18" Margin="0,0,0,20"/>
 
                 <StackPanel Margin="0,0,0,10" HorizontalAlignment="Center">
@@ -47,8 +57,21 @@
                     <TextBlock Text="Tarifa:" FontWeight="Bold"/>
                     <TextBox Name="txtTarifa" Width="200" />
                 </StackPanel>
+                <Grid>
+                    <!-- Contenido de la página -->
 
-                <Button Content="Guardar" Width="100" Click="GuardarTipoVehiculo_Click" HorizontalAlignment="Center"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="7,10,6,-45" Width="221">
+                        <Button Content="Guardar" Style="{StaticResource BotonEstilo}" Click="GuardarTipoVehiculo_Click" HorizontalAlignment="Center"  Margin="0,0,10,0"/>
+                        <!-- Botón Modificar -->
+                        <Button Content="Modificar" Style="{StaticResource BotonEstilo}" Click="ModificarTipoVehiculo_Click" HorizontalAlignment="Center"  Margin="10,0,0,0"/>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="38,266,31,90" Grid.Row="1" Grid.ColumnSpan="2" Width="227">
+                <!-- Botón Eliminar -->
+                <Button Content="Eliminar" Style="{StaticResource BotonEstilo}" Click="EliminarTipoVehiculo_Click" HorizontalAlignment="Center" Margin="0,0,10,0" />
+                <!-- Botón Limpiar -->
+                <Button Content="Limpiar" Style="{StaticResource BotonEstilo}" Click="LimpiarForm_Click" HorizontalAlignment="Center" Margin="10,0,0,0" />
             </StackPanel>
         </Grid>
     </Grid>
