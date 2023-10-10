@@ -53,6 +53,10 @@ namespace Vistas
             else
                 return true;
         }
+        private void LimpiarForm_Click(object sender, RoutedEventArgs e)
+        {
+            limpiarForm();
+        }
 
         private void limpiarForm()
         {

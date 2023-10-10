@@ -16,52 +16,13 @@ using ClasesBase;
 namespace Vistas
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Login.xaml
     /// </summary>
     public partial class Login : Window
     {
-        private Usuario admin;
-        private Usuario operador;
-        private Main main;
         public Login()
         {
             InitializeComponent();
-            inicializarUsuarios();
-        }
-
-        public void inicializarUsuarios(){
-            admin = new Usuario( "admin", "admin","perez", "pepe", "1");
-            operador = new Usuario("operador", "operador", "cordova", "luis", "2");
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-            if (textUser.Text == admin.UserName && passBox.Password == admin.Password)
-            {
-                MessageBox.Show("Usuario o contraseña correcta", "INFO", MessageBoxButton.OK);
-                main = new Main("Admin");
-                main.Show();
-                this.Hide();
-            }
-            else if (textUser.Text == operador.UserName && passBox.Password == operador.Password) {
-                main = new Main("Operador");
-                main.Show();
-                this.Close();
-            }else {
-                MessageBox.Show("Usuario o contraseña incorrecta", "ERROR", MessageBoxButton.OK);
-            }
-        }
-
-        private void btnSalir_Click(object sender, RoutedEventArgs e)
-        {
-            {
-                MessageBoxResult Result;
-
-                Result = MessageBox.Show("¿Está seguro que desea salir?", "Confirmación", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                if (Result == MessageBoxResult.Yes)
-                    Application.Current.Shutdown();
-            }
         }
     }
 }
