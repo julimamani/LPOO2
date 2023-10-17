@@ -7,7 +7,7 @@
       <FileName>Class1.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ClasesBase.TipoVehiculo" Collapsed="true">
+  <Class Name="ClasesBase.TipoVehiculo">
     <Position X="0.5" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAQAAAAAAAAAAAAAAAAAABAAAAAAIAAAAAAAAAAAA=</HashCode>
@@ -15,14 +15,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="ClasesBase.Cliente">
-    <Position X="0.5" Y="2.25" Width="1.5" />
+    <Position X="0.75" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAEAAAAgAAAAAAAAAAAAAAAAgQAAAA=</HashCode>
       <FileName>Cliente.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ClasesBase.Ticket">
-    <Position X="3.5" Y="2.5" Width="1.5" />
+    <Position X="3.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAQAAAAAgAAAAAAAAAAABAAAABQCIAAIAAAgQAAAA=</HashCode>
       <FileName>Ticket.cs</FileName>

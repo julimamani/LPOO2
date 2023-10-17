@@ -20,16 +20,27 @@
                 </ResourceDictionary.MergedDictionaries>
             </ResourceDictionary>
         </Grid.Resources>
-        <Grid>
+        
+        <!-- Encabezado -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="297*" />
+        </Grid.RowDefinitions>
+
+        <Grid HorizontalAlignment="Center" Margin="48,4,36,12" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="248" />
+                <ColumnDefinition Width="48" />
+            </Grid.ColumnDefinitions>
             <!-- Encabezado -->
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="54"/>
+                <RowDefinition Height="38" />
                 <!-- Encabezado -->
                 <RowDefinition Height="*"/>
                 <!-- Contenido -->
             </Grid.RowDefinitions>
-
-            <Border CornerRadius="10" Grid.RowSpan="2">
+            <Border CornerRadius="10" Grid.RowSpan="3" Grid.ColumnSpan="2" Margin="1,42,-1,0">
                 <Border.Background>
                     <LinearGradientBrush>
                         <GradientStop Color="#7be9f6" Offset="0.0"/>
@@ -37,28 +48,29 @@
                     </LinearGradientBrush>
                 </Border.Background>
             </Border>
-
-            <StackPanel VerticalAlignment="Center" Height="92">
-                <Image Source="Imagenes/Logo.png" Width="80"/>
-            </StackPanel>
-
             <!-- Contenido de la página -->
-            <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <TextBlock Text="Formulario de Cliente"  FontSize="20" Margin="0,0,0,20" Style="{StaticResource TextTitulo}"/>
+        </Grid>
 
-                <StackPanel Margin="0,0,0,10" HorizontalAlignment="Center">
+        <!-- Contenido de la página -->
+        <StackPanel VerticalAlignment="Center" Height="92" Margin="48,12,36,346" Grid.Column="1" Grid.Row="1">
+            <Image Source="Imagenes/Logo.png" Width="80" />
+        </StackPanel>
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="72,110,57,24" Width="251">
+            <TextBlock Text="Formulario de Cliente"  FontSize="20" Margin="0,0,0,0" Style="{StaticResource TextTitulo}"  HorizontalAlignment="Center"/>
+
+                <StackPanel Margin="0,0,0,10" HorizontalAlignment="Center" >
                     <TextBlock Text="DNI:" Style="{StaticResource TextTitulo}"/>
-                    <TextBox Name="txtDNI" Width="200" Style="{StaticResource TextInput}"/>
+                <TextBox Name="txtDNI" Width="200" Style="{StaticResource TextInput}" Height="25"/>
                 </StackPanel>
 
-                <StackPanel Margin="0,0,0,10" HorizontalAlignment="Center">
+            <StackPanel Margin="0,0,0,10" HorizontalAlignment="Center" >
                     <TextBlock Text="Apellido:" Style="{StaticResource TextTitulo}"/>
-                    <TextBox Name="txtApellido" Width="200" Style="{StaticResource TextInput}"/>
+                <TextBox Name="txtApellido" Width="200" Style="{StaticResource TextInput}" Height="25"/>
                 </StackPanel>
 
                 <StackPanel Margin="0,0,0,10" HorizontalAlignment="Center">
                     <TextBlock Text="Nombre:" Style="{StaticResource TextTitulo}"/>
-                    <TextBox Name="txtNombre" Width="200" Style="{StaticResource TextInput}"/>
+                <TextBox Name="txtNombre" Width="200" Style="{StaticResource TextInput}" Height="25"/>
                 </StackPanel>
 
                 <StackPanel Margin="0,0,0,10" HorizontalAlignment="Center">
@@ -79,6 +91,6 @@
                 </StackPanel>
 
             </StackPanel>
-        </Grid>
+        
     </Grid>
 </Page>

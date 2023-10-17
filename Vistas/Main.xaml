@@ -11,6 +11,10 @@
     <Grid>
         <!-- Contenido Principal -->
         <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="297*" />
+                <RowDefinition Height="264*" />
+            </Grid.RowDefinitions>
             <!-- Título de la Aplicación -->
             <TextBlock Text="Gestion: Playa de Estacionamiento"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="225,37,0,0" FontSize="20" DataContext="{Binding}" FontWeight="Heavy" Height="36" Width="387" />
             <StackPanel Margin="85,72,57,0" VerticalAlignment="Top" Orientation="Horizontal" Height="35">
@@ -19,9 +23,9 @@
                 <Button Content="Gestión de Clientes" Name="btnGestionClientes" Click="btnGestionClientes_Click" IsEnabled="False" Margin="10,0,0,0" FontWeight="Heavy"></Button>
                 <Button Content="Gestión de Estacionamiento" Name="btnGestionEstacionamiento" Click="btnGestionEstacionamiento_Click" IsEnabled="False" Margin="10,0,0,0" FontWeight="Heavy"></Button>
             </StackPanel>
-            <Button Name="btnAtras" Margin="15,31,718,503" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Padding="0" Click="btnAtras_Click"></Button>
-            <Frame  x:Name="Principal" Margin="0,131,0,0" />
-            <Image Source="/Vistas;component/Imagenes/back.png" Stretch="Uniform" Height="21" Width="45" Margin="15,37,718,503"></Image>
+            <Button Name="btnAtras" Margin="15,31,718,239" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Padding="0" Click="btnAtras_Click"></Button>
+            <Frame  x:Name="Principal" Margin="0,131,0,0" Grid.RowSpan="2" />
+            <Image Source="/Vistas;component/Imagenes/back.png" Stretch="Uniform" Height="21" Width="45" Margin="15,37,718,239"></Image>
         </Grid>
     </Grid>
     </Window>

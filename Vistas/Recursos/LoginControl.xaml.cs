@@ -43,9 +43,11 @@ namespace Vistas.Recursos
                 main = new Main("Admin");
                 main.Show();
                 // Asegúrate de que se muestre la ventana Main
+                Window.GetWindow(this).Close();
             }
             else if (textUser.Text == operador.UserName && passBox.Password == operador.Password)
             {
+                MessageBox.Show("Usuario y contraseña correctos", "INFO", MessageBoxButton.OK);
                 main = new Main("Operador");
                 main.Show();
                 // Cierra la ventana de login
