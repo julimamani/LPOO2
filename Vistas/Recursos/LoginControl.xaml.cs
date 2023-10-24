@@ -12,6 +12,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ClasesBase;
+using System.Data.SqlClient;
+
 namespace Vistas.Recursos
 {
     /// <summary>
@@ -26,36 +28,53 @@ namespace Vistas.Recursos
         public LoginControl()
         {
             InitializeComponent();
-            inicializarUsuarios();
+
         }
 
-        public void inicializarUsuarios()
-        {
-            admin = new Usuario("admin", "admin", "perez", "pepe", "1");
-            operador = new Usuario("operador", "operador", "cordova", "luis", "2");
-        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (textUser.Text == admin.UserName && passBox.Password == admin.Password)
+            string userName = textUser.Text;
+            string password = passBox.Password;
+
+            if (!string.IsNullOrEmpty(userName) && !string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("Usuario y contraseña correctos", "INFO", MessageBoxButton.OK);
-                main = new Main("Admin");
-                main.Show();
-                // Asegúrate de que se muestre la ventana Main
-                Window.GetWindow(this).Close();
-            }
-            else if (textUser.Text == operador.UserName && passBox.Password == operador.Password)
-            {
-                MessageBox.Show("Usuario y contraseña correctos", "INFO", MessageBoxButton.OK);
-                main = new Main("Operador");
-                main.Show();
-                // Cierra la ventana de login
-                Window.GetWindow(this).Close();
+                string roleName = ValidateLogin(userName, password);
+
+                if (!string.IsNullOrEmpty(roleName))
+                {
+                    MessageBox.Show("Usuario y contraseña correctos", "INFO", MessageBoxButton.OK);
+                    main = new Main(roleName);
+                    main.Show();
+                    // Asegúrate de que se muestre la ventana Main
+                    Window.GetWindow(this).Close();
+                }
+                else
+                {
+                    MessageBox.Show("Usuario o contraseña incorrecta", "ERROR", MessageBoxButton.OK);
+                }
             }
             else
             {
-                MessageBox.Show("Usuario o contraseña incorrecta", "ERROR", MessageBoxButton.OK);
+                MessageBox.Show("Faltan llenar campos", "Fallo de autenticación", MessageBoxButton.OK);
+            }
+        }
+
+        private string ValidateLogin(string userName, string password)
+        {
+            try
+            {
+                return trabajarUsuario.validate_login(userName, password);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error al validar el usuario: " + ex.Message, "Error de autenticación", MessageBoxButton.OK);
+                return string.Empty; // Devuelve una cadena vacía para indicar un error en la autenticación
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Se produjo un error. Por favor, contacta al administrador. " + ex.Message, "Error de autenticación", MessageBoxButton.OK);
+                return string.Empty; // Devuelve una cadena vacía para indicar un error en la autenticación
             }
         }
 

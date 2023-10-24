@@ -67,6 +67,7 @@
     <Compile Include="Ticket.cs" />
     <Compile Include="TipoVehiculo.cs" />
     <Compile Include="TrabajarTiposVehiculo.cs" />
+    <Compile Include="trabajarUsuario.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>
   <ItemGroup>
