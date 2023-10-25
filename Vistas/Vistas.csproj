@@ -64,6 +64,9 @@
     <Compile Include="TiposVehiculos.xaml.cs">
       <DependentUpon>TiposVehiculos.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ValidarCliente.xaml.cs">
+      <DependentUpon>ValidarCliente.xaml</DependentUpon>
+    </Compile>
     <Page Include="FrmABMVehiculo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -114,6 +117,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TiposVehiculos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ValidarCliente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

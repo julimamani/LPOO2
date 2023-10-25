@@ -27,7 +27,7 @@ namespace Vistas
             InitializeComponent();
         }
 
-        private Boolean form_Completo()
+        private bool form_Completo()
         {
             MessageBoxResult Result;
 
