@@ -10,9 +10,9 @@
         <ListView.View>
             <GridView>
                 <GridView.Columns>
-                    <GridViewColumn Width="50" Header="Código" DisplayMemberBinding="{Binding Path=TVCodigo}"/>
-                    <GridViewColumn Width="200" Header="Descripcion" DisplayMemberBinding="{Binding Path=Descripcion}"/>
-                    <GridViewColumn Width="200" Header="Tarifa" DisplayMemberBinding="{Binding Path=Tarifa}"/>
+                    <GridViewColumn Width="100" Header="Código" DisplayMemberBinding="{Binding Path=TVCodigo}"/>
+                    <GridViewColumn Width="150" Header="Descripcion" DisplayMemberBinding="{Binding Path=Descripcion}"/>
+                    <GridViewColumn Width="100" Header="Tarifa" DisplayMemberBinding="{Binding Path=Tarifa}"/>
                 </GridView.Columns>
             </GridView>
         </ListView.View>

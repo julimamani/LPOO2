@@ -124,5 +124,11 @@ namespace Vistas
         {
             limpiarForm();
         }
+
+        private void btnVerTiposVehiculos_Click(object sender, RoutedEventArgs e)
+        {
+            TiposVehiculos listadoTiposVehiculos = new TiposVehiculos();
+            listadoTiposVehiculos.Show();
+        }
     }
 }

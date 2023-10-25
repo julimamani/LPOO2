@@ -21,9 +21,7 @@ namespace Vistas.Recursos
     /// </summary>
     public partial class LoginControl : UserControl
     {
-        private Usuario admin;
-        private Usuario operador;
-        private Main main;
+       private Main main;
 
         public LoginControl()
         {

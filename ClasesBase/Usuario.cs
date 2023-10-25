@@ -21,8 +21,10 @@ namespace ClasesBase
             Rol = rol;
         }
 
-        
-
+        public Usuario()
+        {
+     
+        }
        
     }
 }

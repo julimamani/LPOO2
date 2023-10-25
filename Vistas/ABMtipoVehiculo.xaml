@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="380"
+      d:DesignHeight="481" d:DesignWidth="386"
       Title="ABMtipoVehiculo"
       Background="Transparent">
     <Page.Resources>
@@ -12,7 +12,7 @@
         <SolidColorBrush x:Key="ColorFondoBoton" Color="#D5AAFF"/>
     </Page.Resources>
 
-    <Grid>
+    <Grid Height="481" Width="380">
         
         <Grid.Resources>
             <ResourceDictionary>
@@ -46,7 +46,7 @@
                 <!-- Contenido -->
             </Grid.RowDefinitions>
 
-            <Border CornerRadius="10" Grid.RowSpan="3" Grid.ColumnSpan="2" Margin="1,42,-1,12">
+            <Border CornerRadius="10" Grid.RowSpan="3" Grid.ColumnSpan="2" Margin="1,42,0,-12" Width="295">
                 <Border.Background>
                     <LinearGradientBrush>
                         <GradientStop Color="#7be9f6" Offset="0.0"/>
@@ -58,10 +58,10 @@
             
            
         </Grid>
-        <StackPanel VerticalAlignment="Center" Height="92" Margin="48,12,36,346" Grid.Column="1" Grid.Row="1">
+        <StackPanel VerticalAlignment="Top" Height="92" Margin="48,12,36,0" Grid.Column="1" Grid.Row="1">
             <Image Source="Imagenes/Logo.png" Width="80" />
         </StackPanel>
-        <StackPanel Margin="48,110,35,24" Grid.Column="1" Grid.Row="1">
+        <StackPanel Margin="48,110,37,0" Grid.Column="1" Grid.Row="1">
             <TextBlock Text="Ingrese de Tipo de Vehículo" FontWeight="Bold" FontSize="18" Margin="0,0,0,15" Height="36" Width="241" />
             <StackPanel Margin="0,0,0,10" HorizontalAlignment="Center">
                 <TextBlock Text="Código:" FontWeight="Bold" />
@@ -88,7 +88,14 @@
                     <!-- Botón Limpiar -->
                 <Button Content="Limpiar" Style="{StaticResource BotonEstilo}" Click="LimpiarForm_Click" HorizontalAlignment="Center" Margin="0,0,20,0" Height="35" />
                 </StackPanel>
-            
+            <StackPanel Orientation="Horizontal" Margin="38,-55,38,62"  Grid.Row="2" Grid.ColumnSpan="2" Width="151" Height="52">
+                <Button Name="btnVerTiposVehiculos"
+                        HorizontalAlignment="Center"
+                        Content="Ver Tipos Vehiculos"
+                        Style="{StaticResource BotonEstilo}"   
+                        Click="btnVerTiposVehiculos_Click" Height="41" Width="137">
+                </Button>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Page>

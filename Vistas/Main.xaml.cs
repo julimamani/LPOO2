@@ -29,7 +29,7 @@ namespace Vistas
             InitializeComponent();
             MessageBox.Show(" Rol: " + rol, "INFO", MessageBoxButton.OK);
             string roleName = rol.Trim();
-            if (roleName == "administrador")
+            if (roleName == "admin")
             {
                 // Habilitar funciones de gestión de Sectores , Tipos de Vehículo , gestión de Clientes y gestión de Estacionamiento
                 btnGestionSectores.IsEnabled = true;
