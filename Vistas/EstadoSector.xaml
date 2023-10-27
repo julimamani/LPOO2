@@ -1,0 +1,25 @@
+﻿<Window x:Class="Vistas.EstadoSector"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="EstadoSector" Height="300" Width="300">
+    <Window.Resources>
+        <Style x:Key="NuevoComboBoxStyle" TargetType="ComboBox">
+            <Setter Property="Foreground" Value="Blue" />
+            <Setter Property="FontFamily" Value="Arial" />
+        </Style>
+
+        <local:ConversorDeEstados x:Key="EstadoConverter" />
+
+        <XmlDataProvider Source="Tiempos.xml" XPath="/Tiempos/Tiempo" x:Key="ConversorDeEstados" />
+    </Window.Resources>
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Duración min" HorizontalAlignment="Center" Margin="0,0,0,10" />
+            <ComboBox SelectedValue="{Binding Tiempo}" ItemsSource="{Binding Source={StaticResource ConversorDeEstados}}"
+                      Style="{StaticResource NuevoComboBoxStyle}" Name="cmbTiempos" />
+            <Rectangle Width="100" Height="97" HorizontalAlignment="Center"
+                       Fill="{Binding ElementName=cmbTiempos, Path=SelectedItem, Converter={StaticResource EstadoConverter}}" />
+        </StackPanel>
+    </Grid>
+</Window>
+
