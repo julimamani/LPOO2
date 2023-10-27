@@ -8,8 +8,6 @@
             <Setter Property="FontFamily" Value="Arial" />
         </Style>
 
-        <local:ConversorDeEstados x:Key="EstadoConverter" />
-
         <XmlDataProvider Source="Tiempos.xml" XPath="/Tiempos/Tiempo" x:Key="ConversorDeEstados" />
     </Window.Resources>
     <Grid>
@@ -18,8 +16,7 @@
             <ComboBox SelectedValue="{Binding Tiempo}" ItemsSource="{Binding Source={StaticResource ConversorDeEstados}}"
                       Style="{StaticResource NuevoComboBoxStyle}" Name="cmbTiempos" />
             <Rectangle Width="100" Height="97" HorizontalAlignment="Center"
-                       Fill="{Binding ElementName=cmbTiempos, Path=SelectedItem, Converter={StaticResource EstadoConverter}}" />
+                       Fill="{Binding ElementName=cmbTiempos, Path=SelectedItem, Converter={StaticResource ConversorDeEstados}}" />
         </StackPanel>
     </Grid>
 </Window>
-

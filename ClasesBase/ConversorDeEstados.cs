@@ -28,5 +28,12 @@ namespace ClasesBase
         {
             throw new NotImplementedException();
         }
+
+        object IValueConverter.Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+
+       
     }
 }

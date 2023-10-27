@@ -6,7 +6,7 @@ using System.ComponentModel;
 
 namespace ClasesBase
 {
-    public class Usuario : IValueConverter
+    public class Usuario 
     {
         public string UserName;
         public string Password;
@@ -28,9 +28,6 @@ namespace ClasesBase
         }
 
 
-        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }
