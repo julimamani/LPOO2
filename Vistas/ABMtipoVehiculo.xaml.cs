@@ -102,27 +102,26 @@ namespace Vistas
 
             if (form_Completo() && controlDatos())
             {
-                TipoVehiculo tipoVehiculo = new TipoVehiculo();
-                tipoVehiculo.TVCodigo = txtCodigo.Text;
-                tipoVehiculo.Descripcion = txtDescripcion.Text;
-                tipoVehiculo.Tarifa = txtTarifa.Text;
-
                 try
                 {
-                    TrabajarTiposVehiculo.ActualizarTipoVehiculo(tipoVehiculo);
-                    MessageBox.Show("Tipo de vehículo modificado con éxito.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
-                    limpiarForm();
+                    TrabajarTiposVehiculo trabajarTiposVehiculo = new TrabajarTiposVehiculo();
+                    if (trabajarTiposVehiculo.TipoVehiculoExisteEnBaseDeDatos(codigoTipoVehiculo))
+                    {
+                        // The type of vehicle exists, so proceed with the modification
+                        TipoVehiculo tipoVehiculo = new TipoVehiculo();
+                        tipoVehiculo.TVCodigo = txtCodigo.Text;
+                        tipoVehiculo.Descripcion = txtDescripcion.Text;
+                        tipoVehiculo.Tarifa = txtTarifa.Text;
 
-                    // Si deseas navegar a la página de lista de tipos de vehículos, debes hacerlo aquí.
-                    // Si estás utilizando un Frame o similar para la navegación entre páginas, 
-                    // puedes usar un código como el siguiente:
-
-                    // Frame frame = new Frame();
-                    // frame.Navigate(new TiposVehiculos());
-                    // Window.Current.Content = frame;
-
-                    // O si estás trabajando con ventanas, puedes abrir la ventana de TiposVehiculos
-                    // como lo haces en btnVerTiposVehiculos_Click.
+                        TrabajarTiposVehiculo.ActualizarTipoVehiculo(tipoVehiculo);
+                        MessageBox.Show("Tipo de vehículo modificado con éxito.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+                        limpiarForm();
+                    }
+                    else
+                    {
+                        // Show an error message if the type of vehicle doesn't exist
+                        MessageBox.Show("El código de tipo de vehículo no existe en la base de datos.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -134,26 +133,38 @@ namespace Vistas
                 MessageBox.Show("Verifica que todos los campos estén completos y que la tarifa sea un número válido.", "Aviso", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
+
         private void EliminarTipoVehiculo_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("¿Está seguro que desea eliminar el Tipo de Vehículo seleccionado?", "Eliminar Tipo de Vehículo", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            // Obtén el código del tipo de vehículo desde txtCodigo.Text
+            string codigoTipoVehiculo = txtCodigo.Text;
 
-            if (result == MessageBoxResult.No)
+            // Verifica si el campo está vacío
+            if (string.IsNullOrEmpty(codigoTipoVehiculo))
+            {
+                MessageBox.Show("El campo del código está vacío. Ingresa un código válido.", "Aviso", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
+            }
 
             try
             {
-                // Verifica el valor de txtCodigo.Text antes de llamar al método EliminarTipoVehiculo.
-                string codigoTipoVehiculo = txtCodigo.Text;
+                // Verifica si el código existe en la base de datos antes de intentar eliminar
+                TrabajarTiposVehiculo trabajarTiposVehiculo = new TrabajarTiposVehiculo();
+                if (trabajarTiposVehiculo.TipoVehiculoExisteEnBaseDeDatos(codigoTipoVehiculo))
+                {
+                    // Llama al método EliminarTipoVehiculo para eliminar el tipo de vehículo
+                    TrabajarTiposVehiculo.EliminarTipoVehiculo(codigoTipoVehiculo);
+                    MessageBox.Show("Tipo de vehículo eliminado con éxito.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                // Llama al método EliminarTipoVehiculo
-                TrabajarTiposVehiculo.EliminarTipoVehiculo(codigoTipoVehiculo);
 
-                // Muestra un mensaje de éxito
-                MessageBox.Show("Tipo de vehículo eliminado con éxito.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
-
-                // Limpia los campos (reemplaza esto con tu función para limpiar los campos)
-                limpiarForm();
+                    // Limpia los campos (reemplaza esto con tu función para limpiar los campos)
+                    limpiarForm();
+                }
+                else
+                {
+                    // Muestra un mensaje de error si el código no existe en la base de datos
+                    MessageBox.Show("El código de tipo de vehículo no existe en la base de datos.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
             catch (Exception ex)
             {
@@ -161,7 +172,6 @@ namespace Vistas
                 MessageBox.Show("Error al eliminar el tipo de vehículo: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
 
         private void LimpiarForm_Click(object sender, RoutedEventArgs e)
         {

@@ -142,6 +142,24 @@ namespace ClasesBase
               throw new Exception(errorMessage);
           }
       }
+      public bool TipoVehiculoExisteEnBaseDeDatos(string codigoTipoVehiculo)
+      {
+          TrabajarTiposVehiculo trabajarTiposVehiculo = new TrabajarTiposVehiculo();
+
+          // Luego, puedes llamar al método en la instancia creada
+          using (SqlConnection cnn = new SqlConnection(ClasesBase.Properties.Settings.Default.playaConnectionString))
+          {
+              cnn.Open();
+
+              using (SqlCommand checkCmd = new SqlCommand("SELECT COUNT(*) FROM TipoVehiculo WHERE TVCodigo = @codigoTipoVehiculo", cnn))
+              {
+                  checkCmd.Parameters.AddWithValue("@codigoTipoVehiculo", codigoTipoVehiculo);
+                  int existingRecords = (int)checkCmd.ExecuteScalar();
+
+                  return existingRecords > 0;
+              }
+          }
+      }
 
     }
 
