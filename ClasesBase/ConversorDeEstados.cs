@@ -10,6 +10,8 @@ namespace ClasesBase
 {
     public class ConversorDeEstados : IValueConverter
     {
+        
+
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             int minutos = (int)value;
@@ -28,12 +30,5 @@ namespace ClasesBase
         {
             throw new NotImplementedException();
         }
-
-        object IValueConverter.Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
-
-       
     }
 }

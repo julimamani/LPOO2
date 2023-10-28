@@ -13,8 +13,7 @@ using System.Windows.Shapes;
 using System.Xml;
 using ClasesBase;
 
-namespace Vistas
-{
+namespace Vistas{
     /// <summary>
     /// Interaction logic for EstadoSector.xaml
     /// </summary>
@@ -25,6 +24,10 @@ namespace Vistas
             InitializeComponent();
             CargarDatosXml();
             EstablecerDataContext();
+            var xdp = new XmlDataProvider();
+            xdp.Source = new Uri("Tiempos.xml", UriKind.Relative);
+            this.Resources.Add("ConversorDeEstados", xdp);
+
         }
         private void EstablecerDataContext()
         {
