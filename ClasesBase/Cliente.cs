@@ -9,7 +9,7 @@ namespace ClasesBase
 {
     public class Cliente:IDataErrorInfo
     {
-        public int ClienteDNI { get; set; }
+        public long ClienteDNI { get; set; }
         public string Apellido { get; set; }
         public string Nombre { get; set; }
         public string Telefono { get; set; }
