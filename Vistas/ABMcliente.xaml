@@ -9,6 +9,17 @@
       Background="Transparent">
     <Page.Resources>
         <!-- Recursos -->
+        <Style x:Key="TextInput" TargetType="TextBox">
+            <Setter Property="Margin" Value="0,0,0,10" />
+            <!-- Agrega otras propiedades comunes aquí -->
+
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding (Validation.HasError), RelativeSource={RelativeSource Self}}" Value="True">
+                    <Setter Property="BorderBrush" Value="Red" />
+                    <Setter Property="BorderThickness" Value="1" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
         <SolidColorBrush x:Key="ColorFondoBoton" Color="#D5AAFF"/>
     </Page.Resources>
 
@@ -60,34 +71,41 @@
 
                 <StackPanel Margin="0,0,0,10" HorizontalAlignment="Center" >
                     <TextBlock Text="DNI:" Style="{StaticResource TextTitulo}"/>
-                <TextBox Name="txtDNI" Width="200" Style="{StaticResource TextInput}" Height="25"/>
-                </StackPanel>
+                <TextBox Name="txtDNI" Width="200" Style="{StaticResource TextInput}" LostFocus="txtDNI_LostFocus"/>
+
+            </StackPanel>
 
             <StackPanel Margin="0,0,0,10" HorizontalAlignment="Center" >
                     <TextBlock Text="Apellido:" Style="{StaticResource TextTitulo}"/>
-                <TextBox Name="txtApellido" Width="200" Style="{StaticResource TextInput}" Height="25"/>
+                <TextBox Name="txtApellido" Width="200" Height="25"
+                         Style="{StaticResource TextInput}" 
+                         Text="{Binding Apellido, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
                 </StackPanel>
 
                 <StackPanel Margin="0,0,0,10" HorizontalAlignment="Center">
                     <TextBlock Text="Nombre:" Style="{StaticResource TextTitulo}"/>
-                <TextBox Name="txtNombre" Width="200" Style="{StaticResource TextInput}" Height="25"/>
-                </StackPanel>
+                    <TextBox Name="txtNombre" Width="200" Height="25"
+                         Style="{StaticResource TextInput}" 
+                         Text="{Binding Nombre, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+            </StackPanel>
 
                 <StackPanel Margin="0,0,0,10" HorizontalAlignment="Center">
                     <TextBlock Text="Teléfono:" Style="{StaticResource TextTitulo}"/>
-                    <TextBox Name="txtTelefono" Width="200" Style="{StaticResource TextInput}" />
-                </StackPanel>
+                <TextBox Name="txtTelefono" Width="200" Height="25"
+                         Style="{StaticResource TextInput}" 
+                         Text="{Binding Teléfono, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+            </StackPanel>
 
                 <!-- Contenedor para los dos primeros botones con espacio -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button Content="Guardar" Width="100" Click="GuardarCliente_Click" Style="{StaticResource BotonPersonalizado}" Margin="0,0,10,0"/>
-                    <Button Content="Modificar" Width="100" Style="{StaticResource BotonPersonalizado}" Margin="10,0,0,0"/>
+                <Button Content="Modificar" Width="100" Click="ModificarCliente_Click" Style="{StaticResource BotonPersonalizado}" Margin="10,0,0,0"  />
                 </StackPanel>
 
                 <!-- Contenedor para los dos últimos botones con espacio -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
-                    <Button Content="Eliminar" Width="100"  Style="{StaticResource BotonPersonalizado}" Margin="0,0,10,0"/>
-                    <Button Content="Limpiar" Width="100" Click="LimpiarForm_Click" Style="{StaticResource BotonPersonalizado}" Margin="10,0,0,0"/>
+                <Button Content="Eliminar" Width="100" Click="LimpiarForm_Click" Style="{StaticResource BotonPersonalizado}" Margin="0,0,10,0"/>
+                <Button Content="Limpiar" Width="100" Click="LimpiarForm_Click" Style="{StaticResource BotonPersonalizado}" Margin="10,0,0,0"/>
                 </StackPanel>
 
             </StackPanel>

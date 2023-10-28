@@ -15,9 +15,6 @@ using ClasesBase;
 
 namespace Vistas
 {
-    /// <summary>
-    /// Interaction logic for ABMcliente.xaml
-    /// </summary>
     public partial class ABMcliente : Page
     {
         Cliente cliente = new Cliente();
@@ -25,6 +22,119 @@ namespace Vistas
         public ABMcliente()
         {
             InitializeComponent();
+            this.DataContext = new Cliente();
+        }
+
+        private void LimpiarForm_Click(object sender, RoutedEventArgs e)
+        {
+            LimpiarForm();
+        }
+        
+
+        private void LimpiarForm()
+        {
+            txtDNI.Text = string.Empty;
+            txtApellido.Text = string.Empty;
+            txtNombre.Text = string.Empty;
+            txtTelefono.Text = string.Empty;
+        }
+
+        private void GuardarCliente_Click(object sender, RoutedEventArgs e)
+        {
+            // Cargar los datos del cliente desde los campos de texto u otros controles
+            cliente.Nombre = txtNombre.Text;
+            cliente.Apellido = txtApellido.Text;
+            cliente.Telefono = txtTelefono.Text;
+            // Asigna otros campos si es necesario
+
+            // Luego, verifica si hay errores en la instancia del cliente
+            string nombreError = cliente["Nombre"];
+            string apellidoError = cliente["Apellido"];
+            string telefonoError = cliente["Telefono"];
+
+            if (string.IsNullOrEmpty(nombreError) && string.IsNullOrEmpty(apellidoError) && string.IsNullOrEmpty(telefonoError))
+            {
+                // Los datos son válidos, continúa con el proceso de guardado
+                try
+                {
+                    TrabajarClientes.InsertarCliente(cliente);
+                    MessageBox.Show("Cliente guardado con éxito.");
+                    LimpiarForm();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al crear el cliente: " + ex.Message);
+                }
+            }
+            else
+            {
+                // Muestra mensajes de error o realiza acciones según corresponda
+                MessageBox.Show("Por favor, complete todos los campos correctamente antes de guardar.");
+            }
+        }
+        private void EliminarCliente_Click(object sender, RoutedEventArgs e)
+        {
+            // Solicitar confirmación al usuario antes de eliminar el cliente
+            MessageBoxResult result = MessageBox.Show("¿Está seguro que desea eliminar el Cliente seleccionado?", "Eliminar Cliente", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.No)
+                return;
+
+            // Obtener el DNI ingresado por el usuario
+            string dni = txtDNI.Text;
+
+            if (!string.IsNullOrEmpty(dni))
+            {
+                try
+                {
+                    // Verifica el valor de txtDNI.Text antes de llamar al método EliminarCliente.
+                    int dniCliente = int.Parse(dni);
+
+                    // Llama al método de ClasesBase para eliminar el cliente de la base de datos
+                    TrabajarClientes.EliminarCliente(dniCliente);
+
+                    // Muestra un mensaje de éxito
+                    MessageBox.Show("Cliente eliminado con éxito.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                    // Limpia los campos (reemplaza esto con tu función para limpiar los campos)
+                    LimpiarForm();
+                }
+                catch (Exception ex)
+                {
+                    // Muestra un mensaje de error en caso de excepción
+                    MessageBox.Show("Error al eliminar el cliente: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, ingrese un DNI válido para eliminar el cliente.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+
+
+        private void ModificarCliente_Click(object sender, RoutedEventArgs e)
+        {
+            if (form_Completo() && controlDatos())
+            {
+                CargarDatos();
+
+                try
+                {
+                    // Llama al método de ClasesBase para actualizar el cliente en la base de datos
+                    TrabajarClientes.ActualizarCliente(cliente);
+                    MessageBox.Show("Cliente modificado con éxito.");
+                    LimpiarForm();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al modificar el cliente: " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, complete todos los campos antes de modificar.");
+            }
         }
 
         private bool form_Completo()
@@ -32,13 +142,10 @@ namespace Vistas
             MessageBoxResult Result;
 
             Result = MessageBox.Show("¿Quiere guardar los datos?", "Confirmación ", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (Result == MessageBoxResult.Yes)
-                return true;
-            else
-                return false;
+            return Result == MessageBoxResult.Yes;
         }
 
-        private void cargarDatos()
+        private void CargarDatos()
         {
             cliente.ClienteDNI = int.Parse(txtDNI.Text);
             cliente.Apellido = txtApellido.Text;
@@ -48,52 +155,37 @@ namespace Vistas
 
         private bool controlDatos()
         {
-            if (txtDNI.Text == "" || txtApellido.Text == "" || txtNombre.Text == "" || txtTelefono.Text == "")
-                return false;
-            else
-                return true;
-        }
-        private void LimpiarForm_Click(object sender, RoutedEventArgs e)
-        {
-            limpiarForm();
+            return !string.IsNullOrEmpty(txtDNI.Text) &&
+                   !string.IsNullOrEmpty(txtApellido.Text) &&
+                   !string.IsNullOrEmpty(txtNombre.Text) &&
+                   !string.IsNullOrEmpty(txtTelefono.Text);
         }
 
-        private void limpiarForm()
+        private void txtDNI_LostFocus(object sender, RoutedEventArgs e)
         {
-            txtDNI.Text = string.Empty;
-            txtApellido.Text = string.Empty;
-            txtNombre.Text = string.Empty;
-            txtTelefono.Text = string.Empty;
-
-        }
-
-
-        private void GuardarCliente_Click(object sender, RoutedEventArgs e)
-        {
-            if (form_Completo() == true)
+            // Obten el valor del DNI ingresado por el usuario
+            int dni;
+            if (int.TryParse(txtDNI.Text, out dni))
             {
-                if (controlDatos() == true)
+                // Llama al método TraerClientePorDNI de ClasesBase para buscar el cliente en la base de datos
+                Cliente cliente = TrabajarClientes.TraerClientePorDNI(dni);
+
+                if (cliente != null)
                 {
-                    cargarDatos();
-                    //MessageBox.Show("Nombre guardado: " + cliente.Cli_Nombre);
-                    string resultado = "DNI del Cliente: " + cliente.ClienteDNI + "\n" +
-                                       "Apellido del Cliente: " + cliente.Apellido + "\n" +
-                                       "Nombre del Cliente: " + cliente.Nombre + "\n" +
-                                       "Teléfono del Cliente: " + cliente.Telefono;
-
-
-                    // Guarda los datos (puedes implementar esta parte según tus necesidades)
-                    // En este ejemplo, solo mostramos un MessageBox después de la confirmación
-                    MessageBox.Show("Cliente guardado con éxito.");
-                    MessageBox.Show("DNI del Cliente: " + cliente.ClienteDNI + "\nApellido del Cliente: " + cliente.Apellido + "\nNombre del Cliente: " + cliente.Nombre + "\nTeléfono del Cliente: " + cliente.Telefono);
-                    MessageBox.Show(resultado, "Datos: ", MessageBoxButton.OK, MessageBoxImage.Information);
-                    limpiarForm();
+                    // Si se encuentra un cliente, carga automáticamente los campos de apellido, nombre y teléfono
+                    txtApellido.Text = cliente.Apellido;
+                    txtNombre.Text = cliente.Nombre;
+                    txtTelefono.Text = cliente.Telefono;
                 }
                 else
                 {
-                    MessageBox.Show("TODOS LOS CAMPOS DEBEN ESTAR CARGADOS", "Aviso", MessageBoxButton.OK);
+                    // Si el cliente no se encontró, puedes borrar los campos o mostrar un mensaje de error.
+                    txtApellido.Text = string.Empty;
+                    txtNombre.Text = string.Empty;
+                    txtTelefono.Text = string.Empty;
                 }
             }
         }
+
     }
 }
