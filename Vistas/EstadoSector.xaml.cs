@@ -24,9 +24,6 @@ namespace Vistas{
             InitializeComponent();
             CargarDatosXml();
             EstablecerDataContext();
-            var xdp = new XmlDataProvider();
-            xdp.Source = new Uri("Tiempos.xml", UriKind.Relative);
-            this.Resources.Add("ConversorDeEstados", xdp);
 
         }
         private void EstablecerDataContext()
@@ -43,13 +40,13 @@ namespace Vistas{
 
         private void CargarDatosXml(DatosDeSector datos)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
         private void CargarDatosXml()
     {
         // Crear un objeto XmlDocument para cargar el archivo XML
         XmlDocument xmlDoc = new XmlDocument();
-        xmlDoc.Load("Tiempos.xml"); // Asegúrate de que el archivo XML esté en la misma ubicación que tu aplicación
+        xmlDoc.Load("./../../Tiempos.xml"); // Asegúrate de que el archivo XML esté en la misma ubicación que tu aplicación
 
         // Obtener los nodos de "Tiempo" del archivo XML
         XmlNodeList tiempoNodes = xmlDoc.SelectNodes("/Tiempos/Tiempo");

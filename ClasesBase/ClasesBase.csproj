@@ -62,7 +62,6 @@
     <Compile Include="Cliente.cs" />
     <Compile Include="ConversorDeEstados.cs" />
     <Compile Include="DatosDeSector.cs" />
-    <Compile Include="IValueConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
