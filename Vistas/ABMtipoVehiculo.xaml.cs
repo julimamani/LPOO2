@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ClasesBase;
+using System.Data.SqlClient;
 
 
 namespace Vistas
@@ -66,13 +67,15 @@ namespace Vistas
 
                     try
                     {
+                        // Intenta insertar el tipo de vehículo
                         TrabajarTiposVehiculo.insertarTipoVehiculo(tipoVehiculo);
-                        MessageBox.Show("Tipo de vehículo guardado con éxito.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
                         limpiarForm();
+                        MessageBox.Show("Tipo de vehículo guardado con éxito.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Error al guardar el tipo de vehículo: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        // Maneja la excepción lanzada por el método insertarTipoVehiculo
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
                 else
@@ -86,11 +89,51 @@ namespace Vistas
             }
         }
 
+
         private void ModificarTipoVehiculo_Click(object sender, RoutedEventArgs e)
         {
-            // Implementa la lógica de modificación aquí
-        }
+            string codigoTipoVehiculo = txtCodigo.Text;
 
+            if (string.IsNullOrEmpty(codigoTipoVehiculo))
+            {
+                MessageBox.Show("Ingresa un código de tipo de vehículo válido.", "Aviso", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (form_Completo() && controlDatos())
+            {
+                TipoVehiculo tipoVehiculo = new TipoVehiculo();
+                tipoVehiculo.TVCodigo = txtCodigo.Text;
+                tipoVehiculo.Descripcion = txtDescripcion.Text;
+                tipoVehiculo.Tarifa = txtTarifa.Text;
+
+                try
+                {
+                    TrabajarTiposVehiculo.ActualizarTipoVehiculo(tipoVehiculo);
+                    MessageBox.Show("Tipo de vehículo modificado con éxito.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+                    limpiarForm();
+
+                    // Si deseas navegar a la página de lista de tipos de vehículos, debes hacerlo aquí.
+                    // Si estás utilizando un Frame o similar para la navegación entre páginas, 
+                    // puedes usar un código como el siguiente:
+
+                    // Frame frame = new Frame();
+                    // frame.Navigate(new TiposVehiculos());
+                    // Window.Current.Content = frame;
+
+                    // O si estás trabajando con ventanas, puedes abrir la ventana de TiposVehiculos
+                    // como lo haces en btnVerTiposVehiculos_Click.
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al modificar el tipo de vehículo: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Verifica que todos los campos estén completos y que la tarifa sea un número válido.", "Aviso", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
         private void EliminarTipoVehiculo_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("¿Está seguro que desea eliminar el Tipo de Vehículo seleccionado?", "Eliminar Tipo de Vehículo", MessageBoxButton.YesNo, MessageBoxImage.Question);
