@@ -34,7 +34,6 @@ namespace Vistas
                 // Habilitar funciones de gestión de Sectores , Tipos de Vehículo , gestión de Clientes y gestión de Estacionamiento
                 btnGestionSectores.IsEnabled = true;
                 btnGestionTiposVehiculo.IsEnabled = true;
-                btnGestionClientes.IsEnabled = true;
                 // btnGestionEstacionamiento.IsEnabled = true;
             }
             else if (roleName == "operador")
@@ -47,6 +46,7 @@ namespace Vistas
 
         private void btnGestionSectores_Click(object sender, RoutedEventArgs e)
         {
+            Principal.Content = new EstadoSector();
 
         }
 

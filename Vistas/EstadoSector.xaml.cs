@@ -17,7 +17,7 @@ namespace Vistas{
     /// <summary>
     /// Interaction logic for EstadoSector.xaml
     /// </summary>
-    public partial class EstadoSector : Window
+    public partial class EstadoSector : UserControl
     {
         public EstadoSector()
         {
