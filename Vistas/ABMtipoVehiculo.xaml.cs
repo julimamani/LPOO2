@@ -49,7 +49,7 @@ namespace Vistas
 
         private void limpiarForm()
         {
-            txtCodigo.Text = string.Empty;
+            txtCodigo.Text = txtCodigo.Text;
             txtDescripcion.Text = string.Empty;
             txtTarifa.Text = string.Empty;
         }
@@ -92,21 +92,20 @@ namespace Vistas
 
         private void ModificarTipoVehiculo_Click(object sender, RoutedEventArgs e)
         {
-            string codigoTipoVehiculo = txtCodigo.Text;
+            /*string codigoTipoVehiculo = txtCodigo.Text;
 
             if (string.IsNullOrEmpty(codigoTipoVehiculo))
             {
                 MessageBox.Show("Ingresa un código de tipo de vehículo válido.", "Aviso", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
-            }
+            }*/
 
             if (form_Completo() && controlDatos())
             {
                 try
                 {
                     TrabajarTiposVehiculo trabajarTiposVehiculo = new TrabajarTiposVehiculo();
-                    if (trabajarTiposVehiculo.TipoVehiculoExisteEnBaseDeDatos(codigoTipoVehiculo))
-                    {
+                    
                         // The type of vehicle exists, so proceed with the modification
                         TipoVehiculo tipoVehiculo = new TipoVehiculo();
                         tipoVehiculo.TVCodigo = txtCodigo.Text;
@@ -116,12 +115,8 @@ namespace Vistas
                         TrabajarTiposVehiculo.ActualizarTipoVehiculo(tipoVehiculo);
                         MessageBox.Show("Tipo de vehículo modificado con éxito.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
                         limpiarForm();
-                    }
-                    else
-                    {
-                        // Show an error message if the type of vehicle doesn't exist
-                        MessageBox.Show("El código de tipo de vehículo no existe en la base de datos.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
+                        Content = new TiposVehiculos();
+                   
                 }
                 catch (Exception ex)
                 {
@@ -180,8 +175,13 @@ namespace Vistas
 
         private void btnVerTiposVehiculos_Click(object sender, RoutedEventArgs e)
         {
-            TiposVehiculos listadoTiposVehiculos = new TiposVehiculos();
-            listadoTiposVehiculos.Show();
+            //TiposVehiculos listadoTiposVehiculos = new TiposVehiculos();
+            //listadoTiposVehiculos.Show();
+        }
+
+        private void btnCerrar_Click(object sender, RoutedEventArgs e)
+        {
+            Content = new TiposVehiculos();
         }
     }
 }

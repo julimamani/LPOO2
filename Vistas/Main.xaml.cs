@@ -33,8 +33,9 @@ namespace Vistas
             {
                 // Habilitar funciones de gestión de Sectores , Tipos de Vehículo , gestión de Clientes y gestión de Estacionamiento
                 btnGestionSectores.IsEnabled = true;
-                btnGestionTiposVehiculo.IsEnabled = true;
-                // btnGestionEstacionamiento.IsEnabled = true;
+               btnGestionTiposVehiculo.IsEnabled = true;
+                btnGestionClientes.IsEnabled = true;
+                btnGestionEstacionamiento.IsEnabled = true;
             }
             else if (roleName == "operador")
             {
@@ -46,19 +47,19 @@ namespace Vistas
 
         private void btnGestionSectores_Click(object sender, RoutedEventArgs e)
         {
-            Principal.Content = new EstadoSector();
 
         }
 
         private void btnGestionTiposVehiculo_Click(object sender, RoutedEventArgs e)
         {
-            Principal.Content = new ABMtipoVehiculo();
+           // Principal.Content = new ABMtipoVehiculo();
+            DataContext = new TiposVehiculos();
+
         }
 
         private void btnGestionClientes_Click(object sender, RoutedEventArgs e)
         {
-            Principal.Content = new ABMcliente();
-
+            //Principal.Content = new ABMcliente();
         }
 
         private void btnGestionEstacionamiento_Click(object sender, RoutedEventArgs e)
@@ -67,6 +68,28 @@ namespace Vistas
         }
 
         private void btnAtras_Click(object sender, RoutedEventArgs e)
+        {
+            Login login = new Login();
+            this.Close();
+            login.Show();
+        }
+
+        private void TBShow(object sender, RoutedEventArgs e)
+        {
+            GridContent.Opacity = 1;
+        }
+
+        private void TBHide(object sender, RoutedEventArgs e)
+        {
+            GridContent.Opacity = 1;
+        }
+
+        private void PreviewMouseLeftDownBG(object sender, MouseButtonEventArgs e)
+        {
+            BtnShowHide.IsChecked = false;
+        }
+
+        private void close_click(object sender, RoutedEventArgs e)
         {
             Login login = new Login();
             this.Close();

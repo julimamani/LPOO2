@@ -1,21 +1,30 @@
 ﻿<Window x:Class="Vistas.Main"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Gestion Playa de Estacionamiento" Height="600" Width="800"
-        WindowStyle="None" ResizeMode="NoResize">
-    
-    <Window.Background>
-        <ImageBrush ImageSource="Imagenes/fondo.jpg"/>
+        xmlns:viewmodels="clr-namespace:Vistas"
+        Title="Gestion Playa de Estacionamiento" Height="600" Width="1000"
+        WindowStyle="None" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True"
+        Background="Transparent">
+    <Window.Resources>
+        <DataTemplate x:Name="TiposVehiculos"
+                      DataType="{x:Type viewmodels:TiposVehiculos}">
+            <viewmodels:TiposVehiculos DataContext="{Binding}"/>
+        </DataTemplate>
+    </Window.Resources>
+    <!--  <Window.Background>
+       <ImageBrush ImageSource="Imagenes/fondo.jpg"/>
 
     </Window.Background>
     <Grid>
-        <!-- Contenido Principal -->
+      
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="297*" />
                 <RowDefinition Height="264*" />
             </Grid.RowDefinitions>
-            <!-- Título de la Aplicación -->
+            
             <TextBlock Text="Gestion: Playa de Estacionamiento"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="225,37,0,0" FontSize="20" DataContext="{Binding}" FontWeight="Heavy" Height="36" Width="387" />
             <StackPanel Margin="85,72,57,0" VerticalAlignment="Top" Orientation="Horizontal" Height="35">
                 <Button Content="Gestión de Sectores" Name="btnGestionSectores" Click="btnGestionSectores_Click" IsEnabled="False" FontWeight="Heavy" Margin="10,0,0,0" Height="37" Width="125"></Button>
@@ -27,5 +36,210 @@
             <Frame  x:Name="Principal" Margin="0,131,0,0" Grid.RowSpan="2" />
             <Image Source="/Vistas;component/Imagenes/back.png" Stretch="Uniform" Height="21" Width="45" Margin="15,37,718,239"></Image>
         </Grid>
-    </Grid>
+    </Grid>-->
+   <Border CornerRadius="10" Background="Transparent">
+        <Grid Name="Principal" Background="Transparent">
+            <Grid Name="Header" Height="35"
+                  VerticalAlignment="Top" >
+                <Border CornerRadius="10,10,0,0" Background="#F083DA"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="220"/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="GESTION DE ESTACIONAMIENTO" 
+                               Grid.Column="0"
+                               Foreground="Black"
+                               FontSize="15"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"/>
+                    <Button x:Name="btnCerrar"
+                            Grid.Column="2"
+                            Background="Transparent"
+                            BorderBrush="Transparent"
+                            Height="25"
+                            Width="25"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Margin="0,0,0,0"
+                            Click="close_click">
+                        <Image Source="Imagenes/close.png"
+                               Cursor="Hand"/>
+                        
+                    </Button>
+                </Grid>
+            </Grid>
+            <Grid x:Name="GridContent" Background="Transparent" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="565" Width="925" PreviewMouseLeftButtonDown="PreviewMouseLeftDownBG">
+                <Border CornerRadius="0,0,0,10">
+                    <Border.Background>
+                        <ImageBrush ImageSource="Imagenes/fondo.jpg" />
+                    </Border.Background>
+                </Border>
+                <!--<TextBlock Text="ESTACIONAMIENTO" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="50" />-->
+                <ContentControl Content="{Binding}"/>
+            </Grid>
+            <Grid x:Name="GridMenu"
+                  Background="Transparent"
+                  Width="75"
+                  HorizontalAlignment="Left"
+                  Margin="0,35,0,0">
+                <Border Background="#F083DA"
+                        CornerRadius="0,0,0,10"/>
+                <StackPanel Background="Transparent" VerticalAlignment="Top">
+                    <Grid Background="Transparent"
+                          VerticalAlignment="Top"
+                          HorizontalAlignment="Right"
+                          Margin="0,10,10,0">
+                        <ToggleButton x:Name="BtnShowHide"
+                                      Width="30"
+                                      Height="30"
+                                      Cursor="Hand"
+                                      BorderBrush="Transparent" Checked="TBShow">
+                            <ToggleButton.Foreground>
+                                <SolidColorBrush />
+                            </ToggleButton.Foreground>
+                            <ToggleButton.Background>
+                                <ImageBrush ImageSource="Imagenes/menu.png"/>
+                            </ToggleButton.Background>
+                            <ToggleButton.Triggers>
+                                <EventTrigger RoutedEvent="ToggleButton.Unchecked">
+                                    <BeginStoryboard>
+                                        <Storyboard x:Name="HidePanel">
+                                            <DoubleAnimation Storyboard.TargetName="GridMenu"
+                                                             Storyboard.TargetProperty="Width"
+                                                             BeginTime="0:0:0"
+                                                             From="200" To="75"
+                                                             Duration="0:0:0:0.5"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="ToggleButton.Checked">
+                                    <BeginStoryboard>
+                                        <Storyboard x:Name="ShowPanel">
+                                            <DoubleAnimation Storyboard.TargetName="GridMenu"
+                                                             Storyboard.TargetProperty="Width"
+                                                             BeginTime="0:0:0"
+                                                             From="75" To="200"
+                                                             Duration="0:0:0:0.5"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </ToggleButton.Triggers>
+                        </ToggleButton>
+                    </Grid>
+                    <ListView Background="Transparent"
+                              BorderBrush="Transparent"
+                              Margin="0,30,0,0"
+                              ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        <ListViewItem Height="70">
+                            <Button x:Name="btnGestionClientes"  Click="btnGestionClientes_Click" IsEnabled="True" 
+                                    Height="70"
+                                    Width="200"
+                                    HorizontalAlignment="Left"
+                                    Cursor="Hand"
+                                    Background="Transparent"
+                                    BorderBrush="Transparent">
+                                <Grid Width="200">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="60"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Width="50"
+                                           Grid.Column="0"
+                                           HorizontalAlignment="Center"
+                                           Source="Imagenes/users-solid.png"/>
+                                    <TextBlock Grid.Column="1"
+                                               Text="Clientes"
+                                               FontWeight="SemiBold"
+                                               FontSize="15"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Center"/>
+                                </Grid>
+                            </Button>
+                        </ListViewItem>
+                        <ListViewItem Height="70">
+                            <Button x:Name="btnGestionTiposVehiculo" Click="btnGestionTiposVehiculo_Click" IsEnabled="True"
+                                    Height="70"
+                                    Width="200"
+                                    HorizontalAlignment="Left"
+                                    Cursor="Hand"
+                                    Background="Transparent"
+                                    BorderBrush="Transparent">
+                                <Grid Width="200">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="60"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Width="50"
+                                           Grid.Column="0"
+                                           HorizontalAlignment="Center"
+                                           Source="Imagenes/vehicle.png"/>
+                                    <TextBlock Grid.Column="1"
+                                               Text="Tipo de Vehiculos"
+                                               FontWeight="SemiBold"
+                                               FontSize="15"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Center"/>
+                                </Grid>
+                            </Button>
+                        </ListViewItem>
+                        <ListViewItem Height="70">
+                            <Button x:Name="btnGestionEstacionamiento" Click="btnGestionEstacionamiento_Click" IsEnabled="True"
+                                    Height="70"
+                                    Width="200"
+                                    HorizontalAlignment="Left"
+                                    Cursor="Hand"
+                                    Background="Transparent"
+                                    BorderBrush="Transparent">
+                                <Grid Width="200">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="55"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Width="50"
+                                           Grid.Column="0"
+                                           HorizontalAlignment="Center"
+                                           Source="Imagenes/suitcase-solid.png"/>
+                                    <TextBlock Grid.Column="1"
+                                               Text="Estacionamiento"
+                                               FontWeight="SemiBold"
+                                               FontSize="15"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Center"/>
+                                </Grid>
+                            </Button>
+                        </ListViewItem>
+                        <ListViewItem Height="70">
+                            <Button x:Name="btnGestionSectores" Click="btnGestionSectores_Click" IsEnabled="True"
+                                    Height="70"
+                                    Width="200"
+                                    HorizontalAlignment="Left"
+                                    Cursor="Hand"
+                                    Background="Transparent"
+                                    BorderBrush="Transparent">
+                                <Grid Width="200">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="60"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Width="50"
+                                           Grid.Column="0"
+                                           HorizontalAlignment="Center"
+                                           Source="Imagenes/thumbtack-solid.png"/>
+                                    <TextBlock Grid.Column="1"
+                                               Text="Sectores"
+                                               FontWeight="SemiBold"
+                                               FontSize="15"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Center"/>
+                                </Grid>
+                            </Button>
+                        </ListViewItem>
+                        
+                    </ListView>
+                </StackPanel>              
+            </Grid>
+        </Grid>
+    </Border>
     </Window>

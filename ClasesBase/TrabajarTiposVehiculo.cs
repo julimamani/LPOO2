@@ -8,10 +8,10 @@ using System.Data.SqlClient;
 namespace ClasesBase
 {
     public class TrabajarTiposVehiculo
-    {
+    {   
         public DataTable TraerTiposVehiculo()
         {
-            using (DataTable dt = new DataTable())
+           /* using (DataTable dt = new DataTable())
             {
                 using (SqlConnection cn = new SqlConnection(ClasesBase.Properties.Settings.Default.playaConnectionString))
                 {
@@ -21,7 +21,13 @@ namespace ClasesBase
                     }
                 }
                 return dt;
-            }
+            }*/
+            SqlConnection cn = new SqlConnection(ClasesBase.Properties.Settings.Default.playaConnectionString);
+            SqlCommand cmd = new SqlCommand("Select TVCodigo, Tarifa, Descripcion from TipoVehiculo",cn);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            return dt;
         }
 
         public static void insertarTipoVehiculo(TipoVehiculo tipoVehiculo)
@@ -161,7 +167,31 @@ namespace ClasesBase
           }
       }
 
+      public TipoVehiculo obtenerVehiculo(string codigo)
+      {
+          TipoVehiculo vehiculo = null;
+          SqlConnection cn = new SqlConnection(ClasesBase.Properties.Settings.Default.playaConnectionString);
+          cn.Open();
+          SqlCommand cmd = new SqlCommand("Select * From TipoVehiculo Where TVCodigo = @codigo", cn);
+          cmd.Parameters.AddWithValue("@codigo", codigo);
+          using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        // Aquí puedes acceder a los datos específicos que necesitas
+                        vehiculo = new TipoVehiculo();
+                        vehiculo.TVCodigo = reader["TVCodigo"].ToString();
+                        vehiculo.Descripcion = reader["Descripcion"].ToString();
+                        vehiculo.Tarifa = reader["Tarifa"].ToString();
+                    }
+                }
+          return vehiculo;
+
+      }
+
     }
+
+    
 
     }
 

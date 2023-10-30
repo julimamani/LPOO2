@@ -62,7 +62,7 @@
             <Image Source="Imagenes/Logo.png" Width="80" />
         </StackPanel>
         <StackPanel Margin="48,110,37,0" Grid.Column="1" Grid.Row="1">
-            <TextBlock Text="Ingrese de Tipo de Vehículo" FontWeight="Bold" FontSize="18" Margin="0,0,0,15" Height="36" Width="241" />
+            <TextBlock Name="txtTitle"  Text="Tipo de Vehículo" FontWeight="Bold" FontSize="18" Margin="0,0,0,15" Height="36" Width="241" />
             <StackPanel Margin="0,0,0,10" HorizontalAlignment="Center">
                 <TextBlock Text="Código:" FontWeight="Bold" />
                 <TextBox Name="txtCodigo" Width="200" />
@@ -76,24 +76,30 @@
                 <TextBox Name="txtTarifa" Width="200" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" Width="221" Height="50" HorizontalAlignment="Center">
-                <Button Content="Guardar" Style="{StaticResource BotonPersonalizado}" Click="GuardarTipoVehiculo_Click" HorizontalAlignment="Center" Margin="0,0,20,0" Height="35" />
+                <Button Name="btnGuardar" Content="Guardar" Style="{StaticResource BotonEstilo}" Click="GuardarTipoVehiculo_Click" Margin="0,0,20,0" Height="35" />
                 <!-- Botón Modificar -->
-                <Button Content="Modificar" Style="{StaticResource BotonEstilo}" Click="ModificarTipoVehiculo_Click" HorizontalAlignment="Center" Margin="0,0,20,0" Height="35" />
+                <Button Name="btnModificar" Content="Modificar" Style="{StaticResource BotonEstilo}" Click="ModificarTipoVehiculo_Click" HorizontalAlignment="Center" Margin="0,0,20,0" Height="35" />
             </StackPanel>
             
                 <!-- Contenido de la página -->
             <StackPanel Orientation="Horizontal" Margin="38,15,38,62"  Grid.Row="2" Grid.ColumnSpan="2" Width="221" Height="50" HorizontalAlignment="Center">
                     <!-- Botón Eliminar -->
-                <Button Content="Eliminar" Style="{StaticResource BotonEstilo}" Click="EliminarTipoVehiculo_Click" HorizontalAlignment="Center" Margin="0,0,20,0" Height="35" />
+                <!--<Button Content="Eliminar" Style="{StaticResource BotonEstilo}" Click="EliminarTipoVehiculo_Click" HorizontalAlignment="Center" Margin="0,0,20,0" Height="35" />-->
                     <!-- Botón Limpiar -->
-                <Button Content="Limpiar" Style="{StaticResource BotonEstilo}" Click="LimpiarForm_Click" HorizontalAlignment="Center" Margin="0,0,20,0" Height="35" />
+                <Button Content="Limpiar" Style="{StaticResource BotonEstilo}" Click="LimpiarForm_Click" HorizontalAlignment="Center" Margin="60,0,20,0" Height="35" />
                 </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="38,-55,38,62"  Grid.Row="2" Grid.ColumnSpan="2" Width="151" Height="52">
-                <Button Name="btnVerTiposVehiculos"
+                <!--<Button Name="btnVerTiposVehiculos"
                         HorizontalAlignment="Center"
                         Content="Ver Tipos Vehiculos"
                         Style="{StaticResource BotonEstilo}"   
                         Click="btnVerTiposVehiculos_Click" Height="41" Width="137">
+                </Button>-->
+                <Button Name="btnCerrar"
+                        HorizontalAlignment="Center"
+                        Content="Cerrar"
+                        Style="{StaticResource BotonEstilo}"   
+                        Click="btnCerrar_Click" Height="36" Margin="25,0,20,0">
                 </Button>
             </StackPanel>
         </StackPanel>
