@@ -174,5 +174,14 @@ namespace ClasesBase
             }
         }
 
+        public DataTable ObtenerClientes()
+        {
+            SqlConnection cn = new SqlConnection(ClasesBase.Properties.Settings.Default.playaConnectionString);
+            SqlCommand cmd = new SqlCommand("Select ClienteDNI, Apellido, Nombre, Telefono from Cliente", cn);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            return dt;
+        }
     }
 }

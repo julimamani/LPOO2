@@ -60,6 +60,7 @@ namespace Vistas
         private void btnGestionClientes_Click(object sender, RoutedEventArgs e)
         {
             //Principal.Content = new ABMcliente();
+            DataContext = new Clientes();
         }
 
         private void btnGestionEstacionamiento_Click(object sender, RoutedEventArgs e)

@@ -42,7 +42,7 @@ namespace Vistas
         private void GuardarCliente_Click(object sender, RoutedEventArgs e)
         {
             // Cargar los datos del cliente desde los campos de texto u otros controles
-            cliente.ClienteDNI = long.Parse(txtDNI.Text);
+            cliente.ClienteDNI = int.Parse(txtDNI.Text);
             cliente.Nombre = txtNombre.Text;
             cliente.Apellido = txtApellido.Text;
             cliente.Telefono = txtTelefono.Text;
@@ -186,6 +186,11 @@ namespace Vistas
                     txtTelefono.Text = string.Empty;
                 }
             }
+        }
+
+        private void close_Click(object sender, RoutedEventArgs e)
+        {
+            Content = new Clientes();
         }
 
     }
