@@ -8,39 +8,13 @@
         AllowsTransparency="True"
         Background="Transparent">
     <Window.Resources>
-        <DataTemplate x:Name="TiposVehiculos"
-                      DataType="{x:Type viewmodels:TiposVehiculos}">
-            <viewmodels:TiposVehiculos DataContext="{Binding}"/>
+        <DataTemplate x:Name="TiposVehiculos" DataType="{x:Type viewmodels:TiposVehiculos}">
+            <viewmodels:TiposVehiculos DataContext="{Binding}" />
         </DataTemplate>
     </Window.Resources>
-    <!--  <Window.Background>
-       <ImageBrush ImageSource="Imagenes/fondo.jpg"/>
-
-    </Window.Background>
-    <Grid>
-      
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="297*" />
-                <RowDefinition Height="264*" />
-            </Grid.RowDefinitions>
-            
-            <TextBlock Text="Gestion: Playa de Estacionamiento"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="225,37,0,0" FontSize="20" DataContext="{Binding}" FontWeight="Heavy" Height="36" Width="387" />
-            <StackPanel Margin="85,72,57,0" VerticalAlignment="Top" Orientation="Horizontal" Height="35">
-                <Button Content="Gestión de Sectores" Name="btnGestionSectores" Click="btnGestionSectores_Click" IsEnabled="False" FontWeight="Heavy" Margin="10,0,0,0" Height="37" Width="125"></Button>
-                <Button Content="Gestión de Tipos de Vehículo" Name="btnGestionTiposVehiculo" Click="btnGestionTiposVehiculo_Click" IsEnabled="False" Margin="10,0,0,0" FontWeight="Heavy"></Button>
-                <Button Content="Gestión de Clientes" Name="btnGestionClientes" Click="btnGestionClientes_Click" IsEnabled="False" Margin="10,0,0,0" FontWeight="Heavy"></Button>
-                <Button Content="Gestión de Estacionamiento" Name="btnGestionEstacionamiento" Click="btnGestionEstacionamiento_Click" IsEnabled="False" Margin="10,0,0,0" FontWeight="Heavy"></Button>
-            </StackPanel>
-            <Button Name="btnAtras" Margin="15,31,718,239" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Padding="0" Click="btnAtras_Click"></Button>
-            <Frame  x:Name="Principal" Margin="0,131,0,0" Grid.RowSpan="2" />
-            <Image Source="/Vistas;component/Imagenes/back.png" Stretch="Uniform" Height="21" Width="45" Margin="15,37,718,239"></Image>
-        </Grid>
-    </Grid>-->
-   <Border CornerRadius="10" Background="Transparent">
+    <Border CornerRadius="10" Background="Transparent">
         <Grid Name="Principal" Background="Transparent">
-            <Grid Name="Header" Height="35"
-                  VerticalAlignment="Top" >
+            <Grid Name="Header" Height="35" VerticalAlignment="Top">
                 <Border CornerRadius="10,10,0,0" Background="#F083DA"/>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -48,7 +22,7 @@
                         <ColumnDefinition Width="220"/>
                         <ColumnDefinition Width="100"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="GESTION DE ESTACIONAMIENTO" 
+                    <TextBlock Text="GESTION DE ESTACIONAMIENTO"
                                Grid.Column="0"
                                Foreground="Black"
                                FontSize="15"
@@ -64,9 +38,7 @@
                             VerticalAlignment="Top"
                             Margin="0,0,0,0"
                             Click="close_click">
-                        <Image Source="Imagenes/close.png"
-                               Cursor="Hand"/>
-                        
+                        <Image Source="Imagenes/close.png" Cursor="Hand"/>
                     </Button>
                 </Grid>
             </Grid>
@@ -75,27 +47,14 @@
                     <Border.Background>
                         <ImageBrush ImageSource="Imagenes/fondo.jpg" />
                     </Border.Background>
+                    <ContentControl Content="{Binding}" />
                 </Border>
-                <!--<TextBlock Text="ESTACIONAMIENTO" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="50" />-->
-                <ContentControl Content="{Binding}"/>
             </Grid>
-            <Grid x:Name="GridMenu"
-                  Background="Transparent"
-                  Width="75"
-                  HorizontalAlignment="Left"
-                  Margin="0,35,0,0">
-                <Border Background="#F083DA"
-                        CornerRadius="0,0,0,10"/>
+            <Grid x:Name="GridMenu" Background="Transparent" Width="75" HorizontalAlignment="Left" Margin="0,35,0,0">
+                <Border Background="#F083DA" CornerRadius="0,0,0,10"/>
                 <StackPanel Background="Transparent" VerticalAlignment="Top">
-                    <Grid Background="Transparent"
-                          VerticalAlignment="Top"
-                          HorizontalAlignment="Right"
-                          Margin="0,10,10,0">
-                        <ToggleButton x:Name="BtnShowHide"
-                                      Width="30"
-                                      Height="30"
-                                      Cursor="Hand"
-                                      BorderBrush="Transparent" Checked="TBShow">
+                    <Grid Background="Transparent" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,10,10,0">
+                        <ToggleButton x:Name="BtnShowHide" Width="30" Height="30" Cursor="Hand" BorderBrush="Transparent" Checked="TBShow">
                             <ToggleButton.Foreground>
                                 <SolidColorBrush />
                             </ToggleButton.Foreground>
@@ -128,118 +87,70 @@
                             </ToggleButton.Triggers>
                         </ToggleButton>
                     </Grid>
-                    <ListView Background="Transparent"
-                              BorderBrush="Transparent"
-                              Margin="0,30,0,0"
-                              ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListView Background="Transparent" BorderBrush="Transparent" Margin="0,30,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                         <ListViewItem Height="70">
-                            <Button x:Name="btnGestionClientes"  Click="btnGestionClientes_Click" IsEnabled="True" 
-                                    Height="70"
-                                    Width="200"
-                                    HorizontalAlignment="Left"
-                                    Cursor="Hand"
-                                    Background="Transparent"
-                                    BorderBrush="Transparent">
+                            <Button x:Name="btnGestionClientes" Click="btnGestionClientes_Click" IsEnabled="True" Height="70" Width="200" HorizontalAlignment="Left" Cursor="Hand" Background="Transparent" BorderBrush="Transparent">
                                 <Grid Width="200">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="60"/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
-                                    <Image Width="50"
-                                           Grid.Column="0"
-                                           HorizontalAlignment="Center"
-                                           Source="Imagenes/users-solid.png"/>
-                                    <TextBlock Grid.Column="1"
-                                               Text="Clientes"
-                                               FontWeight="SemiBold"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               HorizontalAlignment="Center"/>
+                                    <Image Width="50" Grid.Column="0" HorizontalAlignment="Center" Source="Imagenes/users-solid.png"/>
+                                    <TextBlock Grid.Column="1" Text="Clientes" FontWeight="SemiBold" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                 </Grid>
                             </Button>
                         </ListViewItem>
                         <ListViewItem Height="70">
-                            <Button x:Name="btnGestionTiposVehiculo" Click="btnGestionTiposVehiculo_Click" IsEnabled="True"
-                                    Height="70"
-                                    Width="200"
-                                    HorizontalAlignment="Left"
-                                    Cursor="Hand"
-                                    Background="Transparent"
-                                    BorderBrush="Transparent">
+                            <Button x:Name="btnGestionTiposVehiculo" Click="btnGestionTiposVehiculo_Click" IsEnabled="True" Height="70" Width="200" HorizontalAlignment="Left" Cursor="Hand" Background="Transparent" BorderBrush="Transparent">
                                 <Grid Width="200">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="60"/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
-                                    <Image Width="50"
-                                           Grid.Column="0"
-                                           HorizontalAlignment="Center"
-                                           Source="Imagenes/vehicle.png"/>
-                                    <TextBlock Grid.Column="1"
-                                               Text="Tipo de Vehiculos"
-                                               FontWeight="SemiBold"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               HorizontalAlignment="Center"/>
+                                    <Image Width="50" Grid.Column="0" HorizontalAlignment="Center" Source="Imagenes/vehicle.png"/>
+                                    <TextBlock Grid.Column="1" Text="Tipo de Vehiculos" FontWeight="SemiBold" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                 </Grid>
                             </Button>
                         </ListViewItem>
                         <ListViewItem Height="70">
-                            <Button x:Name="btnGestionEstacionamiento" Click="btnGestionEstacionamiento_Click" IsEnabled="True"
-                                    Height="70"
-                                    Width="200"
-                                    HorizontalAlignment="Left"
-                                    Cursor="Hand"
-                                    Background="Transparent"
-                                    BorderBrush="Transparent">
+                            <Button x:Name="btnGestionEstacionamiento" Click="btnGestionEstacionamiento_Click" IsEnabled="True" Height="70" Width="200" HorizontalAlignment="Left" Cursor="Hand" Background="Transparent" BorderBrush="Transparent">
                                 <Grid Width="200">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="55"/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
-                                    <Image Width="50"
-                                           Grid.Column="0"
-                                           HorizontalAlignment="Center"
-                                           Source="Imagenes/suitcase-solid.png"/>
-                                    <TextBlock Grid.Column="1"
-                                               Text="Estacionamiento"
-                                               FontWeight="SemiBold"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               HorizontalAlignment="Center"/>
+                                    <Image Width="50" Grid.Column="0" HorizontalAlignment="Center" Source="Imagenes/suitcase-solid.png"/>
+                                    <TextBlock Grid.Column="1" Text="Estacionamiento" FontWeight="SemiBold" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                 </Grid>
                             </Button>
                         </ListViewItem>
                         <ListViewItem Height="70">
-                            <Button x:Name="btnGestionSectores" Click="btnGestionSectores_Click" IsEnabled="True"
-                                    Height="70"
-                                    Width="200"
-                                    HorizontalAlignment="Left"
-                                    Cursor="Hand"
-                                    Background="Transparent"
-                                    BorderBrush="Transparent">
+                            <Button x:Name="btnGestionSectores" Click="btnGestionSectores_Click" IsEnabled="True" Height="70" Width="200" HorizontalAlignment="Left" Cursor="Hand" Background="Transparent" BorderBrush="Transparent">
                                 <Grid Width="200">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="60"/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
-                                    <Image Width="50"
-                                           Grid.Column="0"
-                                           HorizontalAlignment="Center"
-                                           Source="Imagenes/thumbtack-solid.png"/>
-                                    <TextBlock Grid.Column="1"
-                                               Text="Sectores"
-                                               FontWeight="SemiBold"
-                                               FontSize="15"
-                                               VerticalAlignment="Center"
-                                               HorizontalAlignment="Center"/>
+                                    <Image Width="50" Grid.Column="0" HorizontalAlignment="Center" Source="Imagenes/thumbtack-solid.png"/>
+                                    <TextBlock Grid.Column="1" Text="Sectores" FontWeight="SemiBold" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                 </Grid>
                             </Button>
                         </ListViewItem>
-                        
+                        <ListViewItem Height="70">
+                            <Button x:Name="btnGestionUsuarios" Click="btnGestionUsuarios_Click" IsEnabled="True" Height="70" Width="200" HorizontalAlignment="Left" Cursor="Hand" Background="Transparent" BorderBrush="Transparent">
+                                <Grid Width="200">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="60"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Width="50" Grid.Column="0" HorizontalAlignment="Center" Source="Imagenes/user.png"/>
+                                    <TextBlock Grid.Column="1" Text="Sectores" FontWeight="SemiBold" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </Grid>
+                            </Button>
+                        </ListViewItem>
                     </ListView>
-                </StackPanel>              
+                </StackPanel>
             </Grid>
         </Grid>
     </Border>
-    </Window>
+</Window>

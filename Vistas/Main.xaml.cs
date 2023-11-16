@@ -43,6 +43,8 @@ namespace Vistas
                 btnGestionClientes.IsEnabled = true;
                 btnGestionEstacionamiento.IsEnabled = true;
             }
+
+            
         }
 
         private void btnGestionSectores_Click(object sender, RoutedEventArgs e)
@@ -95,6 +97,12 @@ namespace Vistas
             Login login = new Login();
             this.Close();
             login.Show();
+        }
+        private void btnGestionUsuarios_Click(object sender, RoutedEventArgs e)
+        {
+
+            ABMUsuario USUARIO = new ABMUsuario();
+
         }
 
     }
