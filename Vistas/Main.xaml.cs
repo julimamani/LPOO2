@@ -101,7 +101,7 @@ namespace Vistas
         private void btnGestionUsuarios_Click(object sender, RoutedEventArgs e)
         {
 
-            ABMUsuario USUARIO = new ABMUsuario();
+            DataContext = new Usuarios();
 
         }
 

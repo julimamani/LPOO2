@@ -144,7 +144,7 @@
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
                                     <Image Width="50" Grid.Column="0" HorizontalAlignment="Center" Source="Imagenes/user.png"/>
-                                    <TextBlock Grid.Column="1" Text="Sectores" FontWeight="SemiBold" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBlock Grid.Column="1" Text="Usuarios" FontWeight="SemiBold" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                 </Grid>
                             </Button>
                         </ListViewItem>

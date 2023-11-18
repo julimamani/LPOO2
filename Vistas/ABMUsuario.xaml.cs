@@ -134,6 +134,11 @@ namespace Vistas
 
             return user;
         }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(null);
+        }
     }
 }
 

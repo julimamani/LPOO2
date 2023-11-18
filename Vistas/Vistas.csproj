@@ -73,6 +73,9 @@
     <Compile Include="TiposVehiculos.xaml.cs">
       <DependentUpon>TiposVehiculos.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Usuarios.xaml.cs">
+      <DependentUpon>Usuarios.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ValidarCliente.xaml.cs">
       <DependentUpon>ValidarCliente.xaml</DependentUpon>
     </Compile>
@@ -138,6 +141,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TiposVehiculos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Usuarios.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -218,6 +225,9 @@
   <ItemGroup>
     <Resource Include="Imagenes\delete.png" />
     <Resource Include="Imagenes\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\user.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

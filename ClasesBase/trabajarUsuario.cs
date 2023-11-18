@@ -194,6 +194,38 @@ namespace ClasesBase
             }
         }
 
+        public static DataTable obtenerUsuariosAsc()
+        {
+            SqlConnection cn = new SqlConnection(ClasesBase.Properties.Settings.Default.playaConnectionString);
+            SqlCommand cmd = new SqlCommand("Select Nombre, Apellido, UserName, rol from Usuario ORDER BY UserName ASC", cn);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            return dt;
+
+        }
+
+        public static DataTable obtenerUsuariosPorUsername(string username)
+        {
+            SqlConnection cn = new SqlConnection(ClasesBase.Properties.Settings.Default.playaConnectionString);
+            string query = @"
+            DECLARE @filtroUsername NVARCHAR(50);
+            SET @filtroUsername = @username + '%';
+
+            SELECT Nombre, Apellido, UserName, rol 
+            FROM Usuario
+            WHERE UserName LIKE @filtroUsername
+            ORDER BY username ASC;";
+
+
+            SqlCommand cmd = new SqlCommand(query, cn);
+            cmd.Parameters.AddWithValue("@username", username);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            return dt;
+
+        }
     }
 }
 

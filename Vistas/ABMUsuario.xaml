@@ -16,7 +16,7 @@
     </Page.Resources>
 
 
-    <Grid>
+    <Grid Background="Pink">
         <Button Content="Modificar" Height="37" HorizontalAlignment="Left" Margin="283,25,0,0" Name="btnModificar" VerticalAlignment="Top" Width="60" Background="#CEFF8800" Foreground="White" BorderBrush="#FFEF7F37" FontWeight="Bold" IsEnabled="False" Click="btnModificar_Click"></Button>
         <Button Background="#CEFF8800" BorderBrush="#FFEF7F37" Content="Eliminar" FontWeight="Bold" Foreground="White" Height="37" HorizontalAlignment="Left" Margin="85,25,0,0" Name="btnEliminar" VerticalAlignment="Top" Width="60" Click="btnEliminar_Click" IsEnabled="False" />
         <Button Background="#CEFF8800" BorderBrush="#FFEF7F37" Content="Limpiar" FontWeight="Bold" Foreground="White" Height="37" HorizontalAlignment="Left" Margin="151,25,0,0" Name="btnCancelar" VerticalAlignment="Top" Width="60" Click="btnCancelar_Click" />
@@ -56,6 +56,7 @@
             <ComboBoxItem Content="admin" />
             <ComboBoxItem Content="operador" />
         </ComboBox>
+        <Button Background="#CEFF8800" BorderBrush="#FFEF7F37" Content="Cerrar" FontWeight="Bold" Foreground="White" Height="37" Name="btnClose" Width="93" Margin="0,260,450,0" Click="btnClose_Click" />
     </Grid>
 
 
