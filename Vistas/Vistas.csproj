@@ -55,9 +55,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="VistaPreviaImpr.xaml.cs">
-      <DependentUpon>VistaPreviaImpr.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
     </Compile>
@@ -73,10 +70,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ABMtipoVehiculo.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="VistaPreviaImpr.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
