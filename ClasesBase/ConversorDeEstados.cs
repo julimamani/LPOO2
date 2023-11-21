@@ -17,7 +17,8 @@ namespace ClasesBase
             {
                 return new SolidColorBrush(Colors.Transparent);
             }else{
-                 int minutos = (int)value;
+                 string min = value.ToString();
+                 int minutos = int.Parse(min);
             if (minutos == 0)
                 return new SolidColorBrush(Colors.Green); // Sector libre (verde)
             else if (minutos <= 30)

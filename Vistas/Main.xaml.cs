@@ -49,7 +49,7 @@ namespace Vistas
 
         private void btnGestionSectores_Click(object sender, RoutedEventArgs e)
         {
-
+            DataContext = new FrmABMVehiculo();
         }
 
         private void btnGestionTiposVehiculo_Click(object sender, RoutedEventArgs e)

@@ -11,7 +11,7 @@ namespace ClasesBase
     public class TrabajarClientes
     {
         public static ObservableCollection<Cliente> TraerClientes() {
-            SqlConnection cn = new SqlConnection(ClasesBase.Properties.Settings.Default.playaConnectionString);
+            /**SqlConnection cn = new SqlConnection(ClasesBase.Properties.Settings.Default.playaConnectionString);
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = "ListarClientes";
             cmd.CommandType = CommandType.StoredProcedure;
@@ -35,7 +35,36 @@ namespace ClasesBase
                 oListaClientes.Add(oCliente);
 
             }
-            return oListaClientes;
+            return oListaClientes;**/
+            ObservableCollection<Cliente> listaClientes = new ObservableCollection<Cliente>();
+            SqlConnection cnn = new SqlConnection(ClasesBase.Properties.Settings.Default.playaConnectionString);
+
+            string cadenaSQL = "SELECT * FROM Cliente";
+
+            using (SqlConnection connection = cnn)
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(cadenaSQL, connection))
+                {
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Cliente cliente = new Cliente
+                        {
+                            ClienteDNI = Convert.ToInt32(reader["ClienteDNI"]),
+                            Telefono = Convert.ToString(reader["Telefono"]),
+                            Apellido = Convert.ToString(reader["Apellido"]),
+                            Nombre = Convert.ToString(reader["Nombre"]),
+                        };
+
+                        listaClientes.Add(cliente);
+                    }
+                }
+            }
+
+            return listaClientes;
         }
         public static Cliente TraerClientePorDNI(int clienteDNI)
         {
