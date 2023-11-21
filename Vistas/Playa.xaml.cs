@@ -55,6 +55,8 @@ namespace Vistas
             ticket.Total = Decimal.Parse(txtTotal.Text);
             ticket.FechaHoraSal = fechaActual.AddMinutes(ticket.Duracion);
             TrabajarPlaya.insertTicket(ticket);
+            sector.habilitado = false;
+            TrabajarPlaya.desahibilitarSector(sector);
             PreviewTicket prevTicket = new PreviewTicket(ticket, cliente, tipoVehiculo);
             prevTicket.Show();
             Content = new FrmABMVehiculo();

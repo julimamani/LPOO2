@@ -158,5 +158,25 @@ namespace ClasesBase
                 throw new Exception(errorMessage);
             }
         }
+
+        public static void desahibilitarSector(Sector sector) {
+            SqlConnection cnn = new SqlConnection(ClasesBase.Properties.Settings.Default.playaConnectionString);
+
+            string cadenaSQL = "UPDATE Sector " +
+                           "SET Habilitado = @Habilitado " +
+                           "WHERE SectorCodigo = @Codigo";
+
+            using (SqlConnection connection = cnn)
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(cadenaSQL, connection))
+                {
+                    command.Parameters.AddWithValue("@Habilitado", sector.habilitado);
+                    command.Parameters.AddWithValue("@Codigo", sector.sectorCodigo);
+                    command.ExecuteNonQuery();
+                }
+            }
+        } 
     }
 }
