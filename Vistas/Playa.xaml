@@ -73,10 +73,28 @@
             <Image Source="Imagenes/Logo.png" Width="80" />
         </StackPanel>
         <StackPanel Margin="-49,5,-51,-191" Grid.Row="1" Grid.ColumnSpan="6">
-            <TextBlock Name="txtTitle"  Text="Registro estacionamiento" FontWeight="Bold" FontSize="18" Margin="0,0,0,15" Height="36" Width="241" />
-            <StackPanel Margin="0,0,0,10" HorizontalAlignment="Center">
+            <TextBlock Name="txtTitle"  Text="Registro Entrada" FontWeight="Bold" FontSize="18" Margin="0,0,0,15" Height="36" Width="241" />
+            <StackPanel Name="stkTicket" Margin="0,0,0,10" HorizontalAlignment="Center">
+                <TextBlock Text="Nro Ticket de Entrada" FontWeight="Bold" />
+                <ComboBox Width="200" x:Name="cmbTickets" DisplayMemberPath="TicketNro" ItemsSource="{Binding Tickets}" SelectionChanged="cmbTickets_SelectionChanged" />
+            </StackPanel>
+            <StackPanel Name="stkCliente" Margin="0,0,0,10" HorizontalAlignment="Center">
+                <TextBlock Text="Cliente:" FontWeight="Bold" />
+                <TextBox Name="txtCliente" Width="200" IsEnabled="False"/>
+            </StackPanel>
+            <StackPanel Name="stkDni" Margin="0,0,0,10" HorizontalAlignment="Center">
                 <TextBlock Text="DNI Cliente:" FontWeight="Bold" />
-                <ComboBox Width="200" x:Name="cmbClientes" DisplayMemberPath="ClienteDNI" ItemsSource="{Binding ClientesDni}" />
+                <ComboBox Width="200" x:Name="cmbClientes" ItemsSource="{Binding ClientesDni}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding ClienteDNI}" />
+                                <TextBlock Text="{Binding Nombre}" Margin="5,0,5,0" />
+                                <TextBlock Text="{Binding Apellido}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
             </StackPanel>
             <StackPanel Margin="0,0,0,10" HorizontalAlignment="Center">
                 <TextBlock Text="Patente Vehiculo:" FontWeight="Bold" />
@@ -86,14 +104,18 @@
                 <TextBlock Text="Identificador Sector:" FontWeight="Bold" />
                 <TextBox Name="txtSector" Width="200" IsEnabled="False" />
             </StackPanel>
-            <!--<StackPanel Margin="0,0,0,10" HorizontalAlignment="Center">
+            <StackPanel Name="stkFechEnt" Margin="0,0,0,10" HorizontalAlignment="Center">
                 <TextBlock Text="Fecha Hora (entrada):" FontWeight="Bold" Width="196" />
                 <TextBox Name="txtEntrada" Width="200" />
             </StackPanel>
-            <StackPanel Margin="0,0,0,10" HorizontalAlignment="Center">
+            <StackPanel Name="stkFechSal" Margin="0,0,0,10" HorizontalAlignment="Center">
                 <TextBlock Text="Fecha Hora (salida):" FontWeight="Bold" />
                 <TextBox Name="txtSalida" Width="200" />
-            </StackPanel>-->
+            </StackPanel>
+            <StackPanel Name="stkTiempo" Margin="0,0,0,10" HorizontalAlignment="Center">
+                <TextBlock Text="Duracion:" FontWeight="Bold" />
+                <TextBox Name="txtDuracion" Width="200" IsEnabled="False"/>
+            </StackPanel>
             <StackPanel Margin="0,0,0,10" HorizontalAlignment="Center">
                 <TextBlock Text="Tipo Vehiculo:" FontWeight="Bold" />
                 <ComboBox Width="200" x:Name="cmbVehiculos" DisplayMemberPath="Descripcion" ItemsSource="{Binding Vehiculos}" SelectionChanged="cmbVehiculos_SelectionChanged" />
@@ -102,7 +124,7 @@
                 <TextBlock Text="Tarifa:" FontWeight="Bold" />
                 <TextBox Name="txtTarifa" Width="200" IsEnabled="False"/>
             </StackPanel>
-            <StackPanel Margin="0,0,0,10" HorizontalAlignment="Center">
+            <StackPanel Name="stkDuracion" Margin="0,0,0,10" HorizontalAlignment="Center">
                 <TextBlock Text="Duracion (minutos):" FontWeight="Bold" />
                 <ComboBox SelectedValue="{Binding Tiempo}" ItemsSource="{Binding Tiempos}"
                       Style="{StaticResource NuevoComboBoxStyle}" Name="cmbTiempos" SelectionChanged="cmbTiempos_SelectionChanged" />
@@ -111,7 +133,7 @@
             </StackPanel>
             <StackPanel Margin="0,0,0,10" HorizontalAlignment="Center">
                 <TextBlock Text="Total:" FontWeight="Bold" />
-                <TextBox Name="txtTotal" Width="200" />
+                <TextBox Name="txtTotal" Width="200" IsEnabled="False"/>
             </StackPanel>
             <StackPanel  Width="221" Height="50" HorizontalAlignment="Center">
                 <Button Name="btnGuardar" Content="Guardar" Style="{StaticResource BotonEstilo}" Click="Guardar_Click" Margin="0,0,0,0" Height="35" />

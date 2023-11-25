@@ -20,7 +20,7 @@ namespace ClasesBase
             set;
         }
 
-        public DateTime? FechaHoraSal
+        public DateTime FechaHoraSal
         {
             get;
             set;

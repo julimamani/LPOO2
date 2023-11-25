@@ -177,6 +177,45 @@ namespace ClasesBase
                     command.ExecuteNonQuery();
                 }
             }
-        } 
+        }
+
+        public static ObservableCollection<Ticket> TraerTickets()
+        {
+            ObservableCollection<Ticket> listaTickets = new ObservableCollection<Ticket>();
+            SqlConnection cnn = new SqlConnection(ClasesBase.Properties.Settings.Default.playaConnectionString);
+
+            string cadenaSQL = "SELECT * FROM Ticket";
+
+            using (SqlConnection connection = cnn)
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(cadenaSQL, connection))
+                {
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Ticket ticket = new Ticket
+                        {
+                            ClienteDNI = Convert.ToInt32(reader["ClienteDNI"]),
+                            Duracion = Convert.ToInt32(reader["Duracion"]),
+                            FechaHoraEnt = Convert.ToDateTime(reader["FechaHoraEnt"]),
+                            FechaHoraSal = Convert.ToDateTime(reader["FechaHoraSal"]),
+                            Patente = Convert.ToString(reader["Patente"]),
+                            SectorCodigo = Convert.ToInt32(reader["SectorCodigo"]),
+                            TVCodigo = Convert.ToInt32(reader["TVCodigo"]),
+                            Tarifa = Convert.ToInt32(reader["Tarifa"]),
+                            Total = Convert.ToInt32(reader["Total"]),
+                            TicketNro = Convert.ToString(reader["TicketNro"])
+                        };
+
+                        listaTickets.Add(ticket);
+                    }
+                }
+            }
+
+            return listaTickets;
+        }
     }
 }

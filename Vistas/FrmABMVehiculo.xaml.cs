@@ -37,10 +37,14 @@ namespace Vistas
             Button botonActual = (Button)sender;
 
             if ((botonActual.Background as SolidColorBrush).Color == Colors.Red)
+            {
                 MessageBox.Show("Sector Ocupado. Registrar Salida");
+                Playa playa = new Playa(botonActual.Content.ToString());
+                FrameSectores.Content = playa;
+            }
             else if ((botonActual.Background as SolidColorBrush).Color == Colors.Green)
             {
-                
+
                 MessageBox.Show("Sector Disponible. Registrar Entrada");
                 Playa playa = new Playa(botonActual.Content.ToString());
                 FrameSectores.Content = playa;
