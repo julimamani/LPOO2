@@ -1,0 +1,30 @@
+﻿<Window x:Class="Vistas.VistaPreviaImpr"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:data="clr-namespace:ClasesBase;assembly=ClasesBase"
+        Title="VistaPreviaImpr" Height="428" Width="643">
+    <Window.Resources>
+        <ObjectDataProvider x:Key="LIST_USERS" ObjectType="{x:Type data:trabajarUsuario}" MethodName="ListarUsuarios" />
+        <CollectionViewSource x:Key="VIEW_LIST_USERS" Source="{Binding Source={StaticResource LIST_USERS}}">
+            <CollectionViewSource.SortDescriptions>
+                <scm:SortDescription PropertyName="U_Nombre" Direction="Ascending" />
+            </CollectionViewSource.SortDescriptions>
+        </CollectionViewSource>
+    </Window.Resources>
+    
+    <Grid Width="548" Height="367">
+        <FlowDocumentReader Height="300" Margin="-1,33,1,34">
+            <FlowDocument Name="DocPrueba">
+                <Paragraph>Lista de Usuarios:</Paragraph>
+                <BlockUIContainer>
+                    <DataGrid x:Name="dataGridListUsuarios" ItemsSource="{Binding Source={StaticResource VIEW_LIST_USERS}}" AutoGenerateColumns="True" />
+                </BlockUIContainer>
+                <BlockUIContainer>
+                    <Button Content="Imprimir" Click="Imprimir_Click" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,20,258,120" Grid.Row="1" />
+                </BlockUIContainer>
+            </FlowDocument>
+        </FlowDocumentReader>
+
+    </Grid>
+</Window>

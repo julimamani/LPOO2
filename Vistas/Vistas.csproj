@@ -85,6 +85,9 @@
     <Compile Include="ValidarCliente.xaml.cs">
       <DependentUpon>ValidarCliente.xaml</DependentUpon>
     </Compile>
+    <Compile Include="VistaPreviaImpr.xaml.cs">
+      <DependentUpon>VistaPreviaImpr.xaml</DependentUpon>
+    </Compile>
     <Page Include="ABMUsuario.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -163,6 +166,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ValidarCliente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VistaPreviaImpr.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

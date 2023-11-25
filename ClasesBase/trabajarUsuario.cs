@@ -88,10 +88,9 @@ namespace ClasesBase
 
         }
 
-        public static List<Usuario> TraerUsuariosList()
+        public static List<Usuario> ListarUsuarios()
         {
             SqlConnection cnn = new SqlConnection(ClasesBase.Properties.Settings.Default.playaConnectionString);
-
             List<Usuario> usuarios = new List<Usuario>();
 
             string cadenaSQL = "SELECT * FROM Usuario";
@@ -119,7 +118,6 @@ namespace ClasesBase
                     }
                 }
             }
-
             return usuarios;
         }
 
