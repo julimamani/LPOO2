@@ -44,8 +44,8 @@ namespace Vistas
             
             try
             {
-                TrabajarTiposVehiculo trabajarTiposVehiculo = new TrabajarTiposVehiculo();
-                TipoVehiculo vehiculo = trabajarTiposVehiculo.obtenerVehiculo(codigo.ToString());
+                
+                TipoVehiculo vehiculo = TrabajarTiposVehiculo.obtenerVehiculo(codigo.ToString());
                 if (vehiculo != null)
                 {
                     ABMtipoVehiculo pageVehiculo = new ABMtipoVehiculo();

@@ -167,7 +167,7 @@ namespace ClasesBase
           }
       }
 
-      public TipoVehiculo obtenerVehiculo(string codigo)
+      public static TipoVehiculo obtenerVehiculo(string codigo)
       {
           TipoVehiculo vehiculo = null;
           SqlConnection cn = new SqlConnection(ClasesBase.Properties.Settings.Default.playaConnectionString);

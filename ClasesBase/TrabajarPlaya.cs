@@ -112,6 +112,7 @@ namespace ClasesBase
                 oSector.identificador = (string)reader["Identificador"];
                 oSector.sectorCodigo = (int)reader["SectorCodigo"];
                 oSector.zonaCodigo = (int)reader["ZonaCodigo"];
+                oSector.fechaHoraUltima = (DateTime)reader["FechaHoraUltima"];
             }
 
             cn.Close();
@@ -163,7 +164,7 @@ namespace ClasesBase
             SqlConnection cnn = new SqlConnection(ClasesBase.Properties.Settings.Default.playaConnectionString);
 
             string cadenaSQL = "UPDATE Sector " +
-                           "SET Habilitado = @Habilitado " +
+                           "SET Habilitado = @Habilitado, FechaHoraUltima = @FechaHoraUltima " +
                            "WHERE SectorCodigo = @Codigo";
 
             using (SqlConnection connection = cnn)
@@ -173,6 +174,7 @@ namespace ClasesBase
                 using (SqlCommand command = new SqlCommand(cadenaSQL, connection))
                 {
                     command.Parameters.AddWithValue("@Habilitado", sector.habilitado);
+                    command.Parameters.AddWithValue("@FechaHoraUltima", sector.fechaHoraUltima);
                     command.Parameters.AddWithValue("@Codigo", sector.sectorCodigo);
                     command.ExecuteNonQuery();
                 }
@@ -216,6 +218,44 @@ namespace ClasesBase
             }
 
             return listaTickets;
+        }
+
+        public static Ticket TraerTicketSector(int codigo)
+        {
+            SqlConnection cn = new SqlConnection(ClasesBase.Properties.Settings.Default.playaConnectionString);
+            SqlCommand cmd = new SqlCommand();
+
+            cmd.CommandText = "SELECT TOP 1 * FROM Ticket WHERE SectorCodigo = @Codigo ORDER BY FechaHoraEnt DESC";
+            cmd.CommandType = CommandType.Text; // Usamos una consulta SQL directa
+            cmd.Connection = cn;
+
+            SqlParameter param = new SqlParameter("@Codigo", SqlDbType.Int);
+            param.Value = codigo;
+            cmd.Parameters.Add(param);
+
+            cn.Open();
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            Ticket oTicket = null;
+
+            if (reader.Read())
+            {
+                oTicket = new Ticket();
+                oTicket.ClienteDNI = (int)reader["ClienteDNI"];
+                oTicket.Duracion = (double)reader["Duracion"];
+                oTicket.FechaHoraEnt = (DateTime)reader["FechaHoraEnt"];
+                oTicket.FechaHoraSal = (DateTime)reader["FechaHoraSal"];
+                oTicket.Patente = (string)reader["Patente"];
+                oTicket.SectorCodigo = (int)reader["SectorCodigo"];
+                oTicket.Tarifa = (decimal)reader["Tarifa"];
+                oTicket.TicketNro = (string)reader["TicketNro"];
+                oTicket.Total = (decimal) reader["Total"];
+                oTicket.TVCodigo = (int)reader["TVCodigo"];
+            }
+
+            cn.Close();
+
+            return oTicket;
         }
     }
 }

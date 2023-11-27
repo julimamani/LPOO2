@@ -1,13 +1,11 @@
-﻿<UserControl x:Class="Vistas.FrmABMVehiculo"
+﻿<UserControl x:Class="Vistas.FrmEstacionamiento"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="565" d:DesignWidth="925">
-    <UserControl.Resources>
-        <SolidColorBrush x:Key="ColorFondoBoton" Color="#D5AAFF"/>
-    </UserControl.Resources>
+ 
 
     <Grid>
         <Grid>
@@ -24,54 +22,16 @@
             <StackPanel Orientation="Horizontal" Height="641" VerticalAlignment="Top">
                 <Button Background="#CEFF8800" BorderBrush="#FFEF7F37" Content="ZONA 1" FontWeight="Bold" Foreground="White" Height="37"  Margin="10,-90,0,400" Name="btnZona1" Width="60" Click="zona1_click" />
                 <Button Background="#CEFF8800" BorderBrush="#FFEF7F37" Content="ZONA 2" FontWeight="Bold" Foreground="White" Height="37"  Margin="-60,0,0,400" Name="btnZona2" Width="60" Click="zona2_click"/>
-                <Button Background="#CEFF8800" BorderBrush="#FFEF7F37" Content="ZONA 2" FontWeight="Bold" Foreground="White" Height="37"  Margin="-60,90,0,400" Name="btnZona3" Width="60" Click="zona3_click"/>
+                <Button Background="#CEFF8800" BorderBrush="#FFEF7F37" Content="ZONA 3" FontWeight="Bold" Foreground="White" Height="37"  Margin="-60,90,0,400" Name="btnZona3" Width="60" Click="zona3_click"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="214,554,6,0" Height="53" VerticalAlignment="Top">
-                <Border 
-                    Background="Red" 
-                    Height="33" 
-                    Name="borOcu" 
-                    Width="83"/>
-                <Label Name="Ocu"
-                       Content="Ocupado" 
-                       FontFamily="Book Antiqua" 
-                       FontSize="16" 
-                       FontWeight="Bold" 
-                       Height="36"  
-                       Width="86" />
-                
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="10,616,202,5">
-                <Border 
-                    Background="Gray" 
-                    Height="33" 
-                    Name="borDesa" 
-                    Width="83"/>
-                <Label Name="Desa"
-                       Content="Desabilitado" 
-                       FontFamily="Book Antiqua" 
-                       FontSize="16" 
-                       FontWeight="Bold" 
-                       Height="38"
-                       Width="109" />
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="234,612,12,2">
-                <Button 
-                        Content="Salir" 
-                        Width="165" 
-                        Height="46" 
-                        FontWeight="Bold"
-                        FontFamily="Book Antiqua"
-                        FontSize="20"
-                        Background="{StaticResource ColorFondoBoton}" Click="Salir_Click">
-                </Button>
-            </StackPanel>
+            
             <!--MESAS-->
 
             <Grid Name="grdMesas" DockPanel.Dock="Top" Margin="0,0,0,6" Height="572" VerticalAlignment="Bottom">
                 <StackPanel Orientation="Horizontal" Margin="14,393,214,6">
                     <Border Background="Green" Height="33" Name="borDis" Width="83" />
                     <Label Name="Dispo" Content="Disponible" Height="38" Width="103" FontSize="16" FontWeight="Bold" FontFamily="Book Antiqua" />
+                    
                 </StackPanel>
             </Grid>
         </Grid>
@@ -83,5 +43,9 @@
                    Grid.Row="0"
                    Grid.RowSpan="8"
                    Grid.ColumnSpan="6" />
+        <Border Background="Red" Height="33" Name="borOcupado" Width="83" Margin="14,408,828,124" />
+        <Label Name="Ocup" Content="Ocupado" FontSize="16" FontWeight="Bold" FontFamily="Book Antiqua" Margin="97,408,717,124" />
+        <Border Background="Gray" Height="33" Name="borDesh" Width="83" Margin="14,492,828,40" />
+        <Label Name="Desh" Content="Deshabilitado" FontSize="16" FontWeight="Bold" FontFamily="Book Antiqua" Margin="97,492,708,40" />
     </Grid>
 </UserControl>

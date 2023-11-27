@@ -12,15 +12,17 @@ namespace ClasesBase
         public string identificador { get; set; }
         public bool habilitado { get; set; }
         public string descripcion { get; set; }
+        public DateTime fechaHoraUltima { get; set; }
 
         public Sector() { }
 
-        public Sector(int zona, string id, bool habilitadoSector, string des)
+        public Sector(int zona, string id, bool habilitadoSector, string des, DateTime fecha)
         {
             zonaCodigo = zona;
             identificador = id;
             habilitado = habilitadoSector;
             descripcion = des;
+            fechaHoraUltima = fecha;
         }
 
     }

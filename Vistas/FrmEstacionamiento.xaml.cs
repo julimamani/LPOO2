@@ -12,18 +12,20 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ClasesBase;
 using System.Collections.ObjectModel;
+using System.Windows.Controls.Primitives;
 
 namespace Vistas
 {
     /// <summary>
     /// Interaction logic for FrmABMVehiculo.xaml
     /// </summary>
-    public partial class FrmABMVehiculo : UserControl
+    public partial class FrmEstacionamiento : UserControl
     {
         public ObservableCollection<Sector> sectores { get; set; }
-        public FrmABMVehiculo()
+        public FrmEstacionamiento()
         {
             InitializeComponent();
+            
             //generarSectores();
         }
 
@@ -34,6 +36,7 @@ namespace Vistas
 
         private void cuadro_Click(object sender, RoutedEventArgs e)
         {
+            
             Button botonActual = (Button)sender;
 
             if ((botonActual.Background as SolidColorBrush).Color == Colors.Red)
@@ -53,56 +56,36 @@ namespace Vistas
                 MessageBox.Show("Sector deshabilitado");
         }
 
-       /** private void btn_Vehiculo_Click(object sender, RoutedEventArgs e)
-        {
-            var wrap = new WrapPanel();
-
-            //var scroll = new ScrollViewer();
-            //wrap.Children.Add(scroll);
-            
-            for (int i = 1; i < 11; i++)
-            {               
-                var boton = new Button();
-
-                boton.Height = 60;
-                boton.Width = 100;
-                boton.FontWeight = FontWeights.Bold;
-                boton.FontFamily = new System.Windows.Media.FontFamily("Book Antiqua");
-                boton.FontSize = 20;
-                boton.Margin = new Thickness(20, 20, 20, 10);
-                boton.Name = "btn_" + i;
-                boton.Content = "E:" + i;
-                boton.Click += new RoutedEventHandler(cuadro_Click);
-                
-                wrap.Children.Add(boton);
-
-                if (i == 7)
-                {
-                    boton.Background = Brushes.Red;
-                }
-                else if (i == 4)
-                {
-                    boton.Background = Brushes.Gray;
-                }
-                else
-                {
-                    boton.Background = Brushes.Green;
-                }
-            }
-          
-            //cnvMesas.Children.Add(wrap);
-            grdMesas.Children.Add(wrap);
-            wrap.Height = 500;
-            wrap.Width = 560;
-            wrap.Orientation = Orientation.Horizontal;
-            wrap.Orientation = Orientation.Vertical;
-            wrap.HorizontalAlignment = HorizontalAlignment.Center;
-            wrap.Margin = new Thickness(10, 0,-250,10);
-        }**/
-
         private void Salir_Click(object sender, RoutedEventArgs e)
         {
             //this.Close();
+        }
+
+        private void cuadro_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Button botonActual = (Button)sender;
+            string identificadorSector = botonActual.Content.ToString();
+            Sector sector = TrabajarPlaya.TraerSectorPorIdentificador(identificadorSector);
+            if ((botonActual.Background as SolidColorBrush).Color == Colors.Red)
+            {
+                Ticket ticket = TrabajarPlaya.TraerTicketSector(sector.sectorCodigo);
+                TimeSpan diferencia = (sector.fechaHoraUltima > DateTime.Now) ? sector.fechaHoraUltima - DateTime.Now : DateTime.Now - sector.fechaHoraUltima;
+                string contenido = "TIEMPO OCUPADO " + "\r\n" + "Horas: " + diferencia.Hours + ", Minutos: " + diferencia.Minutes + ", Segundos: " + diferencia.Seconds + "\r\n" +
+                    "Tipo Vehiculo: "+ TrabajarTiposVehiculo.obtenerVehiculo(ticket.TVCodigo.ToString()).Descripcion +"\r\n" +
+                    "Total: "+ ticket.Total;
+                MostrarPopup(contenido, botonActual);
+           
+            }
+            else if ((botonActual.Background as SolidColorBrush).Color == Colors.Green)
+            {
+                TimeSpan diferencia = (sector.fechaHoraUltima > DateTime.Now) ? sector.fechaHoraUltima - DateTime.Now : DateTime.Now - sector.fechaHoraUltima;
+                string contenido = "TIEMPO LIBRE " + "\r\n" + "Horas: " + diferencia.Hours + ", Minutos: " + diferencia.Minutes + ", Segundos: " + diferencia.Seconds;
+                MostrarPopup(contenido, botonActual);
+            }
+            else
+            {
+                MostrarPopup("Sector No Disponible", botonActual);
+            }
         }
 
         public void generarSectores() {
@@ -123,22 +106,16 @@ namespace Vistas
                 boton.Margin = new Thickness(20, 20, 20, 10);
                 boton.Name = "btn_" + i;
                 boton.Content = sectores[i].identificador;
+                boton.MouseLeave += new MouseEventHandler(cuadro_MouseEnter);
                 boton.Click += new RoutedEventHandler(cuadro_Click);
+               
+                
                 wrap.Children.Add(boton);
-
-                /*if (i == 7)
-                {
-                    boton.Background = Brushes.Red;
-                }
-                else if (i == 4)
+                if (i == 4 || i == 25 || i == 42)
                 {
                     boton.Background = Brushes.Gray;
                 }
-                else
-                {
-                    boton.Background = Brushes.Green;
-                }*/
-                if (sectores[i].habilitado == true)
+                else if (sectores[i].habilitado == true)
                 {
                     boton.Background = Brushes.Green;
                 }
@@ -147,7 +124,6 @@ namespace Vistas
                 }
             }
 
-            //cnvMesas.Children.Add(wrap);
             grdMesas.Children.Add(wrap);
             wrap.Height = 500;
             wrap.Width = 560;
@@ -176,6 +152,39 @@ namespace Vistas
             int zonaCodigo = 3;
             sectores = TrabajarPlaya.TraerSectoresPorZona(zonaCodigo);
             generarSectores();
+        }
+
+        private void MostrarPopup(string contenido, Button boton)
+        {
+            // Crear un Popup
+            Popup popup = new Popup();
+
+            // Crear un Border para contener el contenido y establecer el fondo
+            Border border = new Border();
+            border.Background = Brushes.LightGray;
+
+
+            TextBlock textBlock = new TextBlock();
+            textBlock.Text = contenido;
+            textBlock.Margin = new Thickness(10); // Ajustar el margen según sea necesario
+
+            // Agregar el TextBlock al Border
+            border.Child = textBlock;
+
+            // Establecer el contenido del Popup como el Border
+            popup.Child = border;
+
+            // Establecer el botón como el PlacementTarget del Popup
+            popup.PlacementTarget = boton;
+
+            // Configurar otras propiedades del Popup según sea necesario
+            popup.IsOpen = true;
+            popup.StaysOpen = false;
+            popup.Placement = PlacementMode.Bottom;
+
+            // Puedes ajustar la posición del Popup en relación con el botón según sea necesario
+            popup.HorizontalOffset = 0;
+            popup.VerticalOffset = 10;
         }
     }
     

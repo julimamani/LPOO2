@@ -75,7 +75,7 @@ namespace Vistas
         private void btnCerrar_Click(object sender, RoutedEventArgs e)
         {
             limpiarForm();
-            Content = new FrmABMVehiculo();
+            Content = new FrmEstacionamiento();
         }
 
         private void LimpiarForm_Click(object sender, RoutedEventArgs e)
@@ -156,14 +156,13 @@ namespace Vistas
             ticket.FechaHoraSal = fechaActual.AddMinutes(ticket.Duracion);
             
             TrabajarPlaya.insertTicket(ticket);
-           
+
             PreviewTicket prevTicket = new PreviewTicket(ticket, cliente, tipoVehiculo, sector.habilitado);
-            
-            sector.habilitado = false;
-            
-            TrabajarPlaya.desahibilitarSector(sector);
             prevTicket.Show();
-            Content = new FrmABMVehiculo();
+            Content = new FrmEstacionamiento();
+            sector.habilitado = false;
+            sector.fechaHoraUltima = DateTime.Now;
+            TrabajarPlaya.desahibilitarSector(sector);
         
         }
 
@@ -187,12 +186,11 @@ namespace Vistas
             string cliente = clienteObtenido.Nombre + ", " + clienteObtenido.Apellido;
             string tipoVehiculo = ((TipoVehiculo)cmbVehiculos.SelectedItem).Descripcion;
             PreviewTicket prevTicket = new PreviewTicket(ticket, cliente, tipoVehiculo, sector.habilitado);
-            
-            sector.habilitado = true;
-            
-            TrabajarPlaya.desahibilitarSector(sector);
             prevTicket.Show();
-            Content = new FrmABMVehiculo();
+            Content = new FrmEstacionamiento();
+            sector.habilitado = true;
+            sector.fechaHoraUltima = DateTime.Now;
+            TrabajarPlaya.desahibilitarSector(sector);
         }
     
     }
