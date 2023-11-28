@@ -143,7 +143,7 @@
                     <DataGridTextColumn Header="DNI" Width="100" Binding="{Binding ClienteDNI}"/>
                     <DataGridTextColumn Header="Apellido" Width="150" Binding="{Binding Apellido}"/>
                     <DataGridTextColumn Header="Nombre" Width="150" Binding="{Binding Nombre}"/>
-                    <DataGridTextColumn Header="Telefono" Width="150" Binding="{Binding Telefono}"/>
+                    <DataGridTextColumn Header="Teléfono" Width="150" Binding="{Binding Telefono}"/>
                 </DataGrid.Columns>
             </DataGrid>
             <Frame x:Name="FrameClientes"

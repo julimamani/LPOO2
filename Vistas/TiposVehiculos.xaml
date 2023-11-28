@@ -45,7 +45,7 @@
                 <RowDefinition Height="400" />
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Grid.ColumnSpan="6"
-                       Text="Tipos de Vehiculos"
+                       Text="Tipos de Vehículos"
                        Foreground="Black"
                        FontSize="30"
                        HorizontalAlignment="Center"
@@ -139,8 +139,8 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTextColumn Header="Codigo" Width="100" Binding="{Binding TVCodigo}"/>
-                    <DataGridTextColumn Header="Descripcion" Width="200" Binding="{Binding Descripcion}"/>
+                    <DataGridTextColumn Header="Código" Width="100" Binding="{Binding TVCodigo}"/>
+                    <DataGridTextColumn Header="Descripción" Width="200" Binding="{Binding Descripcion}"/>
                     <DataGridTextColumn Header="Tarifa" Width="300" Binding="{Binding Tarifa}"/>
                 </DataGrid.Columns>
             </DataGrid>

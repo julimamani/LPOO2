@@ -22,12 +22,16 @@
                         <ColumnDefinition Width="220"/>
                         <ColumnDefinition Width="100"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="GESTION DE ESTACIONAMIENTO"
+                    <TextBlock Text="GESTIÓN DE ESTACIONAMIENTO"
                                Grid.Column="0"
                                Foreground="Black"
-                               FontSize="15"
+                               FontSize="20"
+                               FontFamily="Rockwell"
                                HorizontalAlignment="Left"
+                               Margin="10,0,0,0"
                                VerticalAlignment="Center"/>
+                    
+                 
                     <Button x:Name="btnCerrar"
                             Grid.Column="2"
                             Background="Transparent"
@@ -108,7 +112,7 @@
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
                                     <Image Width="50" Grid.Column="0" HorizontalAlignment="Center" Source="Imagenes/vehicle.png"/>
-                                    <TextBlock Grid.Column="1" Text="Tipo de Vehiculos" FontWeight="SemiBold" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBlock Grid.Column="1" Text="Tipo de Vehículos" FontWeight="SemiBold" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                 </Grid>
                             </Button>
                         </ListViewItem>
