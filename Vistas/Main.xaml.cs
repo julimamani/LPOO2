@@ -104,6 +104,13 @@ namespace Vistas
             DataContext = new Usuarios();
 
         }
+        private void btnAcercaDe_Click(object sender, RoutedEventArgs e)
+        {
+
+            //Principal.Content = new AcercaDe();
+            DataContext = new AcercaDe();
+
+        }
 
     }
 }

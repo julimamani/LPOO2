@@ -148,6 +148,18 @@
                                 </Grid>
                             </Button>
                         </ListViewItem>
+                        <ListViewItem Height="70">
+                            <Button x:Name="btnAcercaDe" Click="btnAcercaDe_Click" IsEnabled="True" Height="70" Width="200" HorizontalAlignment="Left" Cursor="Hand" Background="Transparent" BorderBrush="Transparent">
+                                <Grid Width="200">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="60"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Width="50" Grid.Column="0" HorizontalAlignment="Center" Source="Imagenes/infor.png"/>
+                                    <TextBlock Grid.Column="1" Text="Acerca De" FontWeight="SemiBold" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </Grid>
+                            </Button>
+                        </ListViewItem>
                     </ListView>
                 </StackPanel>
             </Grid>

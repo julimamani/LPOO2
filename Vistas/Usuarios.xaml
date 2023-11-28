@@ -93,6 +93,21 @@
                            Foreground="White"
                            FontSize="15"/>
             </Button>
+
+              <Button Background="#D5AAFF"
+                    BorderBrush="#D5AAFF"
+                    Grid.Column="4"
+                    Grid.Row="4"
+                    Cursor="Hand"
+                    Width="150"
+                    x:Name="BtnImprimir"
+                    Click="VistaPreviaImprimir" 
+                    Margin="35,400,35,-37">
+                <TextBlock Text="Vista Previa"
+                           Foreground="White"
+                           FontSize="15"/>
+            </Button>
+
             <DataGrid Grid.Row="4"
                       Grid.Column="1"
                       Grid.RowSpan="2"

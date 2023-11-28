@@ -42,5 +42,10 @@ namespace Vistas
             GridDatos.ItemsSource = trabajarUsuario.obtenerUsuariosPorUsername(usernameBuscado).DefaultView;
         }
 
+        private void VistaPreviaImprimir(object sender, RoutedEventArgs e)
+        {
+            VistaPreviaImpr abm = new VistaPreviaImpr();
+            FrameUsuarios.Content = abm;
+        }
     }
 }
