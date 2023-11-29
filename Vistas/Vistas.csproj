@@ -61,6 +61,9 @@
     <Compile Include="AcercaDe.xaml.cs">
       <DependentUpon>AcercaDe.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Bienvenido.xaml.cs">
+      <DependentUpon>Bienvenido.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Clientes.xaml.cs">
       <DependentUpon>Clientes.xaml</DependentUpon>
     </Compile>
@@ -96,6 +99,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AcercaDe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Bienvenido.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -260,6 +267,10 @@
   <ItemGroup />
   <ItemGroup>
     <Resource Include="Imagenes\infor.png" />
+    <Content Include="Audio\bienvenido.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Imagenes\bienvenido.jpg" />
     <Content Include="Video\video.mp4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

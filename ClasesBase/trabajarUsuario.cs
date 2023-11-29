@@ -10,6 +10,9 @@ namespace ClasesBase
 {
     public class trabajarUsuario
     {
+
+       
+
         public static string validate_login(string szUsername, string szPassword)
         {
             try
@@ -48,6 +51,11 @@ namespace ClasesBase
                 throw new Exception(errorMessage);
             }
         }
+
+        /// <summary>
+        /// variable Objeto estatica que guarda los datos de login de usuario
+        /// </summary>
+        public static Usuario usuario = new Usuario();
          public ObservableCollection<Usuario> TraerUsuarios()
         {
             ObservableCollection<Usuario> listaUsuario = new ObservableCollection<Usuario>();

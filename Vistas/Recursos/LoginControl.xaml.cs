@@ -21,7 +21,7 @@ namespace Vistas.Recursos
     /// </summary>
     public partial class LoginControl : UserControl
     {
-       private Main main;
+      //  private Main main;
 
         public LoginControl()
         {
@@ -42,8 +42,10 @@ namespace Vistas.Recursos
                 if (!string.IsNullOrEmpty(roleName))
                 {
                     MessageBox.Show("Usuario y contraseña correctos", "INFO", MessageBoxButton.OK);
-                    main = new Main(roleName);
-                    main.Show();
+                    mostrarPrincipal();
+
+                    //main = new Main(roleName);
+                    //main.Show();
                     // Asegúrate de que se muestre la ventana Main
                     Window.GetWindow(this).Close();
                 }
@@ -82,6 +84,11 @@ namespace Vistas.Recursos
             Result = MessageBox.Show("¿Está seguro que desea salir?", "Confirmación", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (Result == MessageBoxResult.Yes)
                 Application.Current.Shutdown();
+        }
+        private void mostrarPrincipal()
+        {
+            Bienvenido bienvenido = new Bienvenido(trabajarUsuario.usuario);
+            bienvenido.Show();
         }
     }
 }

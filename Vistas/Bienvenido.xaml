@@ -1,0 +1,102 @@
+﻿<Window x:Class="Vistas.Bienvenido"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Bienvenido" Height="361" Width="700"
+        
+        AllowsTransparency="True" WindowStyle="None" Background="#00FFFFFF" WindowStartupLocation="CenterScreen">
+
+    <!-- BORDE EFECTO DEGRADADO-->
+    <Border Width="650" Height="316" BorderThickness="5"
+                CornerRadius="34,0,34,0" Background="White">
+
+        <Border.BorderBrush>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop x:Name="GradientStop1" Color="#00CED1" Offset="0.0" />
+                <GradientStop x:Name="GradientStop2" Color="#0000CD" Offset="0.25" />
+                <GradientStop x:Name="GradientStop3" Color="#0000CD" Offset="0.75" />
+                <GradientStop x:Name="GradientStop4" Color="#00CED1" Offset="1.0" />
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+
+
+        <Border.Triggers>
+            <EventTrigger RoutedEvent="Border.Loaded">
+                <BeginStoryboard>
+                    <Storyboard>
+
+                        <ThicknessAnimation
+                                Storyboard.TargetProperty="BorderThickness"
+                                Duration="0:0:1.5" 
+                                FillBehavior="HoldEnd" 
+                                From="5,5,5,5" 
+                                To="10,10,10,10"
+                                RepeatBehavior="Forever" 
+                                AutoReverse="True"/>
+
+                        <DoubleAnimation 
+                                Storyboard.TargetName="GradientStop1" 
+                                Storyboard.TargetProperty="Offset" 
+                                From="0.0" To="1.0" Duration="0:0:1" 
+                                RepeatBehavior="Forever" 
+                                AutoReverse="True"/>
+                        <ColorAnimation 
+                                Storyboard.TargetName="GradientStop4" 
+                                Storyboard.TargetProperty="Color" 
+                                To="#D9BF78" Duration="0:0:0.25"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Border.Triggers>
+
+        <DockPanel Height="307">
+            <MediaElement x:Name="mediaElement" 
+                                      Height="20"  
+                                      Width="20"
+                                      LoadedBehavior="Manual" 
+                                      Source="Audio/bienvenido.mp3" />
+            <Border 
+                    DockPanel.Dock="Top"
+                    CornerRadius="34,0,34,0" 
+                    BorderBrush="White" 
+                    BorderThickness="3"    
+                    Margin="0"
+                    Background="#0000FF">
+
+                <Label Content="BIENVENIDO: @usuariolog" 
+                       
+                       FontSize="25" Foreground="White" 
+                       VerticalContentAlignment="Center"
+                       HorizontalContentAlignment="Center"
+                       Height="81" Name="lblWelcomee" Width="441" 
+                       FontFamily="Rockwell"
+                       FontWeight="Bold">
+                    <Label.Style>
+                        <Style TargetType="Label">
+                            <Style.Triggers>
+                                <EventTrigger RoutedEvent="Label.Loaded">
+                                    <EventTrigger.Actions>
+                                        <BeginStoryboard>
+                                            <Storyboard TargetProperty="Opacity">
+                                                <DoubleAnimation  Storyboard.TargetProperty="Opacity" From="0" To="2" Duration="0:0:3" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger.Actions>
+                                </EventTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Label.Style>
+                </Label>
+
+
+
+            </Border>
+            <Image Height="200" Name="image1" Stretch="Fill" Width="452" Source="Imagenes/bienvenido.jpg" OpacityMask="{x:Null}" 
+                   Margin="-15,0,0,0"
+                   />
+
+        </DockPanel>
+
+
+
+    </Border>
+</Window>
