@@ -52,6 +52,7 @@ namespace Vistas
             txtCodigo.Text = txtCodigo.Text;
             txtDescripcion.Text = string.Empty;
             txtTarifa.Text = string.Empty;
+
         }
 
         private void GuardarTipoVehiculo_Click(object sender, RoutedEventArgs e)

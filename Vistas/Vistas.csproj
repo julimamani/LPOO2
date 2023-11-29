@@ -36,8 +36,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ReachFramework" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -70,6 +74,9 @@
     <Compile Include="EstadoSector.xaml.cs">
       <DependentUpon>EstadoSector.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Listado de Sectores Ocupados.xaml.cs">
+      <DependentUpon>Listado de Sectores Ocupados.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
     </Compile>
@@ -91,8 +98,14 @@
     <Compile Include="ValidarCliente.xaml.cs">
       <DependentUpon>ValidarCliente.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ventas.xaml.cs">
+      <DependentUpon>Ventas.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VistaPreviaImpr.xaml.cs">
       <DependentUpon>VistaPreviaImpr.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VistaPreviaVentas.xaml.cs">
+      <DependentUpon>VistaPreviaVentas.xaml</DependentUpon>
     </Compile>
     <Page Include="ABMUsuario.xaml">
       <SubType>Designer</SubType>
@@ -125,6 +138,10 @@
     <Page Include="ABMtipoVehiculo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Listado de Sectores Ocupados.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Login.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -183,7 +200,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Ventas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="VistaPreviaImpr.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VistaPreviaVentas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -226,6 +251,10 @@
       <Project>{F74EF260-7FAC-45D8-8B01-28D09F8D69AA}</Project>
       <Name>ClasesBase</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LPOOII_GRUPO_09\LPOOII_GRUPO_09.csproj">
+      <Project>{7C45ED6E-615E-4E15-92C2-53D9FEF59A49}</Project>
+      <Name>LPOOII_GRUPO_09</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Imagenes\fondo.jpg" />
@@ -264,7 +293,9 @@
   <ItemGroup>
     <Resource Include="Imagenes\user.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Imagenes\infor.png" />
     <Content Include="Audio\bienvenido.mp3">
