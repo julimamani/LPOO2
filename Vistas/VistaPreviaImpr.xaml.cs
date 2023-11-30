@@ -17,7 +17,7 @@ namespace Vistas
     /// Interaction logic for VistaPreviaImpr.xaml
     /// </summary>
     
-    public partial class VistaPreviaImpr : Window
+    public partial class VistaPreviaImpr : UserControl
     {
         public void iniciar(){
             InitializeComponent();
@@ -26,6 +26,7 @@ namespace Vistas
         public List<ClasesBase.Usuario> listUsuario { get; set; }
         public VistaPreviaImpr()
         {
+            InitializeComponent();
             dgUsers.AutoGeneratingColumn += dataGridListUsuarios_AutoGeneratingColumn;
             listUsuario = ClasesBase.trabajarUsuario.ListarUsuarios();
             cargarDatos();
@@ -44,6 +45,7 @@ namespace Vistas
             {
                 printDialog.PrintDocument(((IDocumentPaginatorSource)ImprUsuarios).DocumentPaginator, "Impresión desde Vista Previa");
             }
+            this.Visibility = Visibility.Collapsed;
         }
         private void dataGridListUsuarios_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
@@ -53,11 +55,6 @@ namespace Vistas
                 e.Column.Width = 150; // Cambia 150 al valor que desees
             }
             // Puedes agregar más condiciones para otras columnas si es necesario
-        }
-
-        private void dgVentas_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
     }
 }

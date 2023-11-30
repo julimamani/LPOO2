@@ -1,21 +1,21 @@
-﻿<Window x:Class="Vistas.VistaPreviaImpr"
+﻿<UserControl x:Class="Vistas.VistaPreviaImpr"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:data="clr-namespace:ClasesBase;assembly=ClasesBase"
-        Title="VistaPreviaImpr" Height="400" Width="800" >  
+         Height="400" Width="800" >  
     <Grid >
         <StackPanel HorizontalAlignment="Left" Name="stackPanel1" VerticalAlignment="Top" Height="337" Width="750" Margin="12,12,0,0" Background="White">
             <FlowDocumentReader Height="280" Width="700" IsTwoPageViewEnabled="True">
                 <FlowDocument Name="ImprUsuarios" ColumnWidth="800">
                 <Paragraph>Lista de Usuarios:</Paragraph>
                                     <BlockUIContainer>
-                                        <DataGrid Name="dgUsers" AutoGenerateColumns="False" HorizontalAlignment="Left"  VerticalAlignment="Top" IsReadOnly="True" CanUserResizeRows="False" CanUserDeleteRows="False" CanUserAddRows="False" SelectionChanged="dgVentas_SelectionChanged">
+                                        <DataGrid Name="dgUsers" AutoGenerateColumns="False" HorizontalAlignment="Left"  VerticalAlignment="Top" IsReadOnly="True" CanUserResizeRows="False" CanUserDeleteRows="False" CanUserAddRows="False" >
                                             <DataGrid.Columns>
-                                                <DataGridTextColumn Width="80" Header="Nombre" Binding="{Binding Nombre}"/>
-                                                <DataGridTextColumn Width="80" Header="Apellido" Binding="{Binding Apellido}"/>
-                                                <DataGridTextColumn Width="80" Header="Rol" Binding="{Binding Rol}"/>
-                                                <DataGridTextColumn Width="155" Header="Nombre De Usuario" Binding="{Binding UserName}"/>
+                                                <DataGridTextColumn Width="150" Header="Nombre" Binding="{Binding Nombre}"/>
+                                                <DataGridTextColumn Width="150" Header="Apellido" Binding="{Binding Apellido}"/>
+                                                <DataGridTextColumn Width="150" Header="Rol" Binding="{Binding Rol}"/>
+                                                <DataGridTextColumn Width="200" Header="Nombre De Usuario" Binding="{Binding UserName}"/>
                                             </DataGrid.Columns>
                                         </DataGrid>
                                     </BlockUIContainer>
@@ -28,4 +28,4 @@
         </StackPanel>
     </Grid>
     
-</Window>
+</UserControl>

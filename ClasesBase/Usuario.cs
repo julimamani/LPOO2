@@ -8,11 +8,11 @@ namespace ClasesBase
 {
     public class Usuario 
     {
-        public string UserName;
-        public string Password;
-        public string Apellido;
-        public string Nombre;
-        public string Rol;
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public string Apellido { get; set; }
+        public string Nombre { get; set; }
+        public string Rol { get; set; }
 
         public Usuario(string username, string pass, string apellido, string nombre, string rol) {
             UserName = username;
