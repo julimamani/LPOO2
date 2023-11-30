@@ -26,7 +26,7 @@ namespace Vistas
         public List<ClasesBase.Usuario> listUsuario { get; set; }
         public VistaPreviaImpr()
         {
-            dataGridListUsuarios.AutoGeneratingColumn += dataGridListUsuarios_AutoGeneratingColumn;
+            dgUsers.AutoGeneratingColumn += dataGridListUsuarios_AutoGeneratingColumn;
             listUsuario = ClasesBase.trabajarUsuario.ListarUsuarios();
             cargarDatos();
         }
@@ -34,15 +34,15 @@ namespace Vistas
 
         private void cargarDatos()
         {
-            dataGridListUsuarios.ItemsSource = listUsuario;
+            dgUsers.ItemsSource = listUsuario;
         }
 
-        private void Imprimir_Click(object sender, RoutedEventArgs e)
+        private void btnImprimir_Click(object sender, RoutedEventArgs e)
         {
             PrintDialog printDialog = new PrintDialog();
             if (printDialog.ShowDialog() == true)
             {
-                printDialog.PrintDocument(((IDocumentPaginatorSource)DocPrueba).DocumentPaginator, "Impresión desde Vista Previa");
+                printDialog.PrintDocument(((IDocumentPaginatorSource)ImprUsuarios).DocumentPaginator, "Impresión desde Vista Previa");
             }
         }
         private void dataGridListUsuarios_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
@@ -53,6 +53,11 @@ namespace Vistas
                 e.Column.Width = 150; // Cambia 150 al valor que desees
             }
             // Puedes agregar más condiciones para otras columnas si es necesario
+        }
+
+        private void dgVentas_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

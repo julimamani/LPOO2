@@ -3,28 +3,29 @@
         xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:data="clr-namespace:ClasesBase;assembly=ClasesBase"
-        Title="VistaPreviaImpr" Height="428" Width="643">
-    <Window.Resources>
-        <ObjectDataProvider x:Key="LIST_USERS" ObjectType="{x:Type data:trabajarUsuario}" MethodName="ListarUsuarios" />
-        <CollectionViewSource x:Key="VIEW_LIST_USERS" Source="{Binding Source={StaticResource LIST_USERS}}">
-            <CollectionViewSource.SortDescriptions>
-                <scm:SortDescription PropertyName="U_Nombre" Direction="Ascending" />
-            </CollectionViewSource.SortDescriptions>
-        </CollectionViewSource>
-    </Window.Resources>
-    
-    <Grid Width="548" Height="367">
-        <FlowDocumentReader Height="300" Margin="-1,33,1,34">
-            <FlowDocument Name="DocPrueba">
+        Title="VistaPreviaImpr" Height="400" Width="800" >  
+    <Grid >
+        <StackPanel HorizontalAlignment="Left" Name="stackPanel1" VerticalAlignment="Top" Height="337" Width="750" Margin="12,12,0,0" Background="White">
+            <FlowDocumentReader Height="280" Width="700" IsTwoPageViewEnabled="True">
+                <FlowDocument Name="ImprUsuarios" ColumnWidth="800">
                 <Paragraph>Lista de Usuarios:</Paragraph>
-                <BlockUIContainer>
-                    <DataGrid x:Name="dataGridListUsuarios" ItemsSource="{Binding Source={StaticResource VIEW_LIST_USERS}}" AutoGenerateColumns="True" />
-                </BlockUIContainer>
-                <BlockUIContainer>
-                    <Button Content="Imprimir" Click="Imprimir_Click" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,20,258,120" Grid.Row="1" />
-                </BlockUIContainer>
-            </FlowDocument>
-        </FlowDocumentReader>
+                                    <BlockUIContainer>
+                                        <DataGrid Name="dgUsers" AutoGenerateColumns="False" HorizontalAlignment="Left"  VerticalAlignment="Top" IsReadOnly="True" CanUserResizeRows="False" CanUserDeleteRows="False" CanUserAddRows="False" SelectionChanged="dgVentas_SelectionChanged">
+                                            <DataGrid.Columns>
+                                                <DataGridTextColumn Width="80" Header="Nombre" Binding="{Binding Nombre}"/>
+                                                <DataGridTextColumn Width="80" Header="Apellido" Binding="{Binding Apellido}"/>
+                                                <DataGridTextColumn Width="80" Header="Rol" Binding="{Binding Rol}"/>
+                                                <DataGridTextColumn Width="155" Header="Nombre De Usuario" Binding="{Binding UserName}"/>
+                                            </DataGrid.Columns>
+                                        </DataGrid>
+                                    </BlockUIContainer>
 
+                </FlowDocument>
+            </FlowDocumentReader>
+            <Button Content="Imprimir" Name="btnImprimir" Margin="0,20" Click="btnImprimir_Click" Width="100" />
+
+            
+        </StackPanel>
     </Grid>
+    
 </Window>
