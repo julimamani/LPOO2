@@ -302,6 +302,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Resource Include="Imagenes\bienvenido.jpg" />
+    <Resource Include="Imagenes\venta.png" />
     <Content Include="Video\video.mp4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

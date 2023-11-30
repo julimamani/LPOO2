@@ -117,14 +117,14 @@
                             </Button>
                         </ListViewItem>
                         <ListViewItem Height="70">
-                            <Button x:Name="btnGestionEstacionamiento" Click="btnGestionEstacionamiento_Click" IsEnabled="True" Height="70" Width="200" HorizontalAlignment="Left" Cursor="Hand" Background="Transparent" BorderBrush="Transparent">
+                            <Button x:Name="btnVenta" Click="btnVenta_Click" IsEnabled="True" Height="70" Width="200" HorizontalAlignment="Left" Cursor="Hand" Background="Transparent" BorderBrush="Transparent">
                                 <Grid Width="200">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="55"/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
-                                    <Image Width="50" Grid.Column="0" HorizontalAlignment="Center" Source="Imagenes/suitcase-solid.png"/>
-                                    <TextBlock Grid.Column="1" Text="Estacionamiento" FontWeight="SemiBold" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <Image Width="50" Grid.Column="0" HorizontalAlignment="Center" Source="Imagenes/venta.png"/>
+                                    <TextBlock Grid.Column="1" Text="Venta" FontWeight="SemiBold" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                 </Grid>
                             </Button>
                         </ListViewItem>

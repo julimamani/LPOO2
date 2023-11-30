@@ -33,15 +33,15 @@ namespace Vistas
             {
                 // Habilitar funciones de gestión de Sectores , Tipos de Vehículo , gestión de Clientes y gestión de Estacionamiento
                 btnGestionSectores.IsEnabled = true;
-               btnGestionTiposVehiculo.IsEnabled = true;
+                btnGestionTiposVehiculo.IsEnabled = true;
                 btnGestionClientes.IsEnabled = true;
-                btnGestionEstacionamiento.IsEnabled = true;
+                btnVenta.IsEnabled = true;
             }
             else if (roleName == "operador")
             {
                 // Habilitar funciones de gestión de Clientes y Gestión de Estacionamiento
                 btnGestionClientes.IsEnabled = true;
-                btnGestionEstacionamiento.IsEnabled = true;
+                btnVenta.IsEnabled = true;
             }
 
             
@@ -63,11 +63,6 @@ namespace Vistas
         {
             //Principal.Content = new ABMcliente();
             DataContext = new Clientes();
-        }
-
-        private void btnGestionEstacionamiento_Click(object sender, RoutedEventArgs e)
-        {
-            DataContext = new Ventas();
         }
 
         private void btnAtras_Click(object sender, RoutedEventArgs e)
@@ -110,6 +105,11 @@ namespace Vistas
             //Principal.Content = new AcercaDe();
             DataContext = new AcercaDe();
 
+        }
+
+        private void btnVenta_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new Ventas();
         }
 
     }
