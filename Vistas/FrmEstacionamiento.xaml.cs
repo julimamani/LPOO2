@@ -21,6 +21,7 @@ namespace Vistas
     /// </summary>
     public partial class FrmEstacionamiento : UserControl
     {
+        ToolTip tooltip = new ToolTip();
         public ObservableCollection<Sector> sectores { get; set; }
         public FrmEstacionamiento()
         {
@@ -41,19 +42,23 @@ namespace Vistas
 
             if ((botonActual.Background as SolidColorBrush).Color == Colors.Red)
             {
-                MessageBox.Show("Sector Ocupado. Registrar Salida");
-                Playa playa = new Playa(botonActual.Content.ToString());
-                FrameSectores.Content = playa;
+                MessageBoxResult result = MessageBox.Show("Sector Ocupado. ¿Deseas registrar la salida?", "Confirmación", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    Playa playa = new Playa(botonActual.Content.ToString());
+                    FrameSectores.Content = playa;
+                }
             }
             else if ((botonActual.Background as SolidColorBrush).Color == Colors.Green)
             {
-
-                MessageBox.Show("Sector Disponible. Registrar Entrada");
-                Playa playa = new Playa(botonActual.Content.ToString());
-                FrameSectores.Content = playa;
+                MessageBoxResult result = MessageBox.Show("Sector Disponible. ¿Deseas registrar la entrada?", "Confirmación", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    Playa playa = new Playa(botonActual.Content.ToString());
+                    FrameSectores.Content = playa;
+                }
             }
-            else
-                MessageBox.Show("Sector deshabilitado");
+            
         }
 
         private void Salir_Click(object sender, RoutedEventArgs e)
@@ -73,18 +78,18 @@ namespace Vistas
                 string contenido = "TIEMPO OCUPADO " + "\r\n" + "Horas: " + diferencia.Hours + ", Minutos: " + diferencia.Minutes + ", Segundos: " + diferencia.Seconds + "\r\n" +
                     "Tipo Vehiculo: "+ TrabajarTiposVehiculo.obtenerVehiculo(ticket.TVCodigo.ToString()).Descripcion +"\r\n" +
                     "Total: "+ ticket.Total;
-                MostrarPopup(contenido, botonActual);
+                mostrarToolTip(contenido, botonActual);
            
             }
             else if ((botonActual.Background as SolidColorBrush).Color == Colors.Green)
             {
                 TimeSpan diferencia = (sector.fechaHoraUltima > DateTime.Now) ? sector.fechaHoraUltima - DateTime.Now : DateTime.Now - sector.fechaHoraUltima;
                 string contenido = "TIEMPO LIBRE " + "\r\n" + "Horas: " + diferencia.Hours + ", Minutos: " + diferencia.Minutes + ", Segundos: " + diferencia.Seconds;
-                MostrarPopup(contenido, botonActual);
+                mostrarToolTip(contenido, botonActual);
             }
             else
             {
-                MostrarPopup("Sector No Disponible", botonActual);
+                mostrarToolTip("Sector No Disponible", botonActual);
             }
         }
 
@@ -106,7 +111,7 @@ namespace Vistas
                 boton.Margin = new Thickness(20, 20, 20, 10);
                 boton.Name = "btn_" + i;
                 boton.Content = sectores[i].identificador;
-                boton.MouseLeave += new MouseEventHandler(cuadro_MouseEnter);
+                boton.MouseEnter += new MouseEventHandler(cuadro_MouseEnter);
                 boton.Click += new RoutedEventHandler(cuadro_Click);
                
                 
@@ -154,37 +159,20 @@ namespace Vistas
             generarSectores();
         }
 
-        private void MostrarPopup(string contenido, Button boton)
+        private void mostrarToolTip(string contenido, Button boton)
         {
-            // Crear un Popup
-            Popup popup = new Popup();
 
-            // Crear un Border para contener el contenido y establecer el fondo
-            Border border = new Border();
-            border.Background = Brushes.LightGray;
+            tooltip.Content = contenido;
 
+            // Asignar el ToolTip al botón
+            boton.ToolTip = tooltip;
+            tooltip.FontSize = 16;
 
-            TextBlock textBlock = new TextBlock();
-            textBlock.Text = contenido;
-            textBlock.Margin = new Thickness(10); // Ajustar el margen según sea necesario
+            LinearGradientBrush gradientBrush = new LinearGradientBrush();
+            gradientBrush.GradientStops.Add(new GradientStop((Color)ColorConverter.ConvertFromString("#7be9f6"), 0.0));
+            gradientBrush.GradientStops.Add(new GradientStop((Color)ColorConverter.ConvertFromString("#f083da"), 1.0));
 
-            // Agregar el TextBlock al Border
-            border.Child = textBlock;
-
-            // Establecer el contenido del Popup como el Border
-            popup.Child = border;
-
-            // Establecer el botón como el PlacementTarget del Popup
-            popup.PlacementTarget = boton;
-
-            // Configurar otras propiedades del Popup según sea necesario
-            popup.IsOpen = true;
-            popup.StaysOpen = false;
-            popup.Placement = PlacementMode.Bottom;
-
-            // Puedes ajustar la posición del Popup en relación con el botón según sea necesario
-            popup.HorizontalOffset = 0;
-            popup.VerticalOffset = 10;
+            tooltip.Background = gradientBrush;
         }
     }
     
