@@ -67,7 +67,7 @@ namespace Vistas
 
         private void btnGestionEstacionamiento_Click(object sender, RoutedEventArgs e)
         {
-
+            DataContext = new Ventas();
         }
 
         private void btnAtras_Click(object sender, RoutedEventArgs e)
