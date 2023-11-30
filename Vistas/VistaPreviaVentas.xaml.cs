@@ -10,6 +10,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data;
+
 
 namespace Vistas
 {
@@ -18,9 +20,31 @@ namespace Vistas
     /// </summary>
     public partial class VistaPreviaVentas : Window
     {
-        public VistaPreviaVentas()
+       DataTable dtVentas;
+        string totalVentas;
+
+        public VistaPreviaVentas(DataTable ventas, string total)
         {
             InitializeComponent();
+            dtVentas = ventas;
+            totalVentas = total;
+            CargarDatosDeVentas();
+        }
+
+        private void btnImprimir_Click(object sender, RoutedEventArgs e)
+        {
+            PrintDialog printDialog = new PrintDialog();
+            if (printDialog.ShowDialog() == true)
+            {
+                printDialog.PrintDocument(((IDocumentPaginatorSource)DocVentas).DocumentPaginator, "Impresión Documento Dinámico");
+            }
+        }
+
+        private void CargarDatosDeVentas()
+        {
+            dgVentas.ItemsSource = dtVentas.DefaultView;
+            totalDeVentas.Text = totalVentas;
         }
     }
+    
 }
