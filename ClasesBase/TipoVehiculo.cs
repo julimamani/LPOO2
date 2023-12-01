@@ -10,12 +10,14 @@ namespace ClasesBase
         public string TVCodigo { get; set; }
         public string Descripcion { get; set; }
         public string Tarifa { get; set; }
-
-        public TipoVehiculo(string tvCodigo, string descripcion, string tarifa)
+        public string Imagen { get; set; }
+        
+        public TipoVehiculo(string tvCodigo, string descripcion, string tarifa, string imagen)
         {
             TVCodigo = tvCodigo;
             Descripcion = descripcion;
             Tarifa = tarifa;
+            Imagen = imagen;
         }
         public TipoVehiculo()
         {
