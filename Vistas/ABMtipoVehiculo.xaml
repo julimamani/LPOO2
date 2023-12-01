@@ -77,7 +77,7 @@
             </StackPanel>
             <StackPanel Margin="0,0,0,10" HorizontalAlignment="Center">
                 <TextBlock Text="Imagen:" FontWeight="Bold" />
-                <TextBox Name="Imagen_Url" Width="200" Text="{Binding Imagen}" />
+                <TextBox Name="Imagen_Url" Width="200"/>
                 <Button Content="Cargar Imagen" Click="CargarImagen_Click" Margin="0,5,0,0" />
                 <Image Height="53" Margin="10,17,0,0" Name="imgVehiculo" Stretch="Fill" Width="79" />
             </StackPanel>
