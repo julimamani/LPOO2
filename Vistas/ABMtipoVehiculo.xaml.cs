@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -42,7 +42,7 @@ namespace Vistas
 
         private bool controlDatos()
         {
-            if (txtCodigo.Text == "" || txtDescripcion.Text == "" || txtTarifa.Text == "")
+            if (txtCodigo.Text == "" || txtDescripcion.Text == "" || txtTarifa.Text == "" || Imagen_Url.Text ==  "")
                 return false;
             else
                 return true;
@@ -53,8 +53,9 @@ namespace Vistas
             txtCodigo.Text = txtCodigo.Text;
             txtDescripcion.Text = string.Empty;
             txtTarifa.Text = string.Empty;
-
+            Imagen_Url.Text = string.Empty;
         }
+
 
         private void GuardarTipoVehiculo_Click(object sender, RoutedEventArgs e)
         {
@@ -66,7 +67,7 @@ namespace Vistas
                     tipoVehiculo.TVCodigo = txtCodigo.Text;
                     tipoVehiculo.Descripcion = txtDescripcion.Text;
                     tipoVehiculo.Tarifa = txtTarifa.Text;
-                    tipoVehiculo.Imagen = txtImagen.Text;
+                    tipoVehiculo.Imagen = Imagen_Url.Text; // Guarda la ruta de la imagen
 
                     try
                     {
@@ -91,21 +92,22 @@ namespace Vistas
                 MessageBox.Show("TODOS LOS CAMPOS DEBEN ESTAR CARGADOS", "Aviso", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
+
         private void CargarImagen_Click(object sender, RoutedEventArgs e)
 {
     OpenFileDialog openFileDialog = new OpenFileDialog();
     openFileDialog.Filter = "Archivos de imagen|*.jpg;*.jpeg;*.png;*.gif|Todos los archivos|*.*";
+
     if (openFileDialog.ShowDialog() == true)
     {
         string rutaImagen = openFileDialog.FileName;
         Imagen_Url.Text = rutaImagen;
-        
+
         // Muestra la imagen en el control Image
         BitmapImage bitmap = new BitmapImage(new Uri(rutaImagen));
         imgVehiculo.Source = bitmap;
     }
 }
-
 
         private void ModificarTipoVehiculo_Click(object sender, RoutedEventArgs e)
         {
@@ -128,8 +130,7 @@ namespace Vistas
                         tipoVehiculo.TVCodigo = txtCodigo.Text;
                         tipoVehiculo.Descripcion = txtDescripcion.Text;
                         tipoVehiculo.Tarifa = txtTarifa.Text;
-                        tipoImagen.Imagen = txtImagen.Text;
-
+                        tipoVehiculo.Imagen = Imagen_Url.Text;
                         TrabajarTiposVehiculo.ActualizarTipoVehiculo(tipoVehiculo);
                         MessageBox.Show("Tipo de vehículo modificado con éxito.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
                         limpiarForm();
@@ -201,5 +202,6 @@ namespace Vistas
         {
             Content = new TiposVehiculos();
         }
+
     }
 }
