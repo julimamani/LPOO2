@@ -66,6 +66,7 @@ namespace Vistas
                     tipoVehiculo.TVCodigo = txtCodigo.Text;
                     tipoVehiculo.Descripcion = txtDescripcion.Text;
                     tipoVehiculo.Tarifa = txtTarifa.Text;
+                    tipoVehiculo.Imagen = txtImagen.Text;
 
                     try
                     {
@@ -127,6 +128,7 @@ namespace Vistas
                         tipoVehiculo.TVCodigo = txtCodigo.Text;
                         tipoVehiculo.Descripcion = txtDescripcion.Text;
                         tipoVehiculo.Tarifa = txtTarifa.Text;
+                        tipoImagen.Imagen = txtImagen.Text;
 
                         TrabajarTiposVehiculo.ActualizarTipoVehiculo(tipoVehiculo);
                         MessageBox.Show("Tipo de vehículo modificado con éxito.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
