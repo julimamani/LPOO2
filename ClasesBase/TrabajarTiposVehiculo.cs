@@ -23,7 +23,7 @@ namespace ClasesBase
                 return dt;
             }*/
             SqlConnection cn = new SqlConnection(ClasesBase.Properties.Settings.Default.playaConnectionString);
-            SqlCommand cmd = new SqlCommand("Select TVCodigo, Tarifa, Descripcion from TipoVehiculo",cn);
+            SqlCommand cmd = new SqlCommand("Select TVCodigo, Tarifa, Descripcion, Imagen from TipoVehiculo",cn);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -56,11 +56,11 @@ namespace ClasesBase
                             {
                                 cmd.Connection = cnn;
                                 cmd.CommandType = CommandType.Text;
-                                cmd.CommandText = "INSERT INTO TipoVehiculo (Descripcion, Tarifa, TVCodigo) VALUES (@descripcion, @tarifa, @tvcodigo)";
+                                cmd.CommandText = "INSERT INTO TipoVehiculo (Descripcion, Tarifa, TVCodigo, Imagen) VALUES (@descripcion, @tarifa, @tvcodigo, @imagen)";
                                 cmd.Parameters.AddWithValue("@descripcion", tipoVehiculo.Descripcion);
                                 cmd.Parameters.AddWithValue("@tarifa", tipoVehiculo.Tarifa);
                                 cmd.Parameters.AddWithValue("@tvcodigo", tipoVehiculo.TVCodigo);
-
+                                cmd.Parameters.AddWithValue("@imagen", tipoVehiculo.Imagen);
                                 cmd.ExecuteNonQuery();
                                 Console.WriteLine("Inserción exitosa");
                             }
@@ -131,6 +131,7 @@ namespace ClasesBase
                       cmd.Parameters.AddWithValue("@descripcion", tipoVehiculo.Descripcion);
                       cmd.Parameters.AddWithValue("@tarifa", tipoVehiculo.Tarifa);
                       cmd.Parameters.AddWithValue("@tvcodigo", tipoVehiculo.TVCodigo);
+                      cmd.Parameters.AddWithValue("@imagen", tipoVehiculo.Imagen);
 
                       cmd.ExecuteNonQuery();
                       Console.WriteLine("Modificación exitosa");
@@ -183,6 +184,7 @@ namespace ClasesBase
                         vehiculo.TVCodigo = reader["TVCodigo"].ToString();
                         vehiculo.Descripcion = reader["Descripcion"].ToString();
                         vehiculo.Tarifa = reader["Tarifa"].ToString();
+                        vehiculo.Imagen = reader["Imagen"].ToString();
                     }
                 }
           return vehiculo;
