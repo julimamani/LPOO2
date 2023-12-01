@@ -24,21 +24,23 @@ namespace Vistas
     {
         DispatcherTimer timer = new DispatcherTimer();
         Usuario usu = new Usuario();
+        string role;
 
-        public Bienvenido(Usuario usuarioLogeado)
+        public Bienvenido(string rol)
         {
-            usu = usuarioLogeado;
+            //usu = usuarioLogeado;
+            role = rol;
             timer.Tick += new EventHandler(WaitingEvent);
             timer.Interval = new TimeSpan(0, 0, 3);
             timer.Start();
             InitializeComponent();
-            lblWelcomee.Content = lblWelcomee.Content.ToString().Replace("@usuariolog", usuarioLogeado.Rol);
+            lblWelcomee.Content = lblWelcomee.Content.ToString().Replace("@usuariolog", role);
             ReproducirSonido("Audio/bienvenido.mp3");
         }
 
         public void WaitingEvent(object source, EventArgs e)
         {
-            Main oMenuPrincipal = new Main();
+            Main oMenuPrincipal = new Main(role);
             oMenuPrincipal.Show();
             timer.Stop();
             this.Close();

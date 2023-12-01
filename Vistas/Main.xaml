@@ -92,7 +92,7 @@
                         </ToggleButton>
                     </Grid>
                     <ListView Background="Transparent" BorderBrush="Transparent" Margin="0,30,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                        <ListViewItem Height="70">
+                        <ListViewItem Name="lwCliente" Height="70">
                             <Button x:Name="btnGestionClientes" Click="btnGestionClientes_Click" IsEnabled="True" Height="70" Width="200" HorizontalAlignment="Left" Cursor="Hand" Background="Transparent" BorderBrush="Transparent">
                                 <Grid Width="200">
                                     <Grid.ColumnDefinitions>
@@ -104,7 +104,7 @@
                                 </Grid>
                             </Button>
                         </ListViewItem>
-                        <ListViewItem Height="70">
+                        <ListViewItem Name="lwVehiculo" Height="70">
                             <Button x:Name="btnGestionTiposVehiculo" Click="btnGestionTiposVehiculo_Click" IsEnabled="True" Height="70" Width="200" HorizontalAlignment="Left" Cursor="Hand" Background="Transparent" BorderBrush="Transparent">
                                 <Grid Width="200">
                                     <Grid.ColumnDefinitions>
@@ -116,7 +116,7 @@
                                 </Grid>
                             </Button>
                         </ListViewItem>
-                        <ListViewItem Height="70">
+                        <ListViewItem Name="lwVenta" Height="70">
                             <Button x:Name="btnVenta" Click="btnVenta_Click" IsEnabled="True" Height="70" Width="200" HorizontalAlignment="Left" Cursor="Hand" Background="Transparent" BorderBrush="Transparent">
                                 <Grid Width="200">
                                     <Grid.ColumnDefinitions>
@@ -128,7 +128,7 @@
                                 </Grid>
                             </Button>
                         </ListViewItem>
-                        <ListViewItem Height="70">
+                        <ListViewItem Name="lwSector" Height="70">
                             <Button x:Name="btnGestionSectores" Click="btnGestionSectores_Click" IsEnabled="True" Height="70" Width="200" HorizontalAlignment="Left" Cursor="Hand" Background="Transparent" BorderBrush="Transparent">
                                 <Grid Width="200">
                                     <Grid.ColumnDefinitions>
@@ -140,7 +140,7 @@
                                 </Grid>
                             </Button>
                         </ListViewItem>
-                        <ListViewItem Height="70">
+                        <ListViewItem Name="lwUser" Height="70">
                             <Button x:Name="btnGestionUsuarios" Click="btnGestionUsuarios_Click" IsEnabled="True" Height="70" Width="200" HorizontalAlignment="Left" Cursor="Hand" Background="Transparent" BorderBrush="Transparent">
                                 <Grid Width="200">
                                     <Grid.ColumnDefinitions>

@@ -35,13 +35,26 @@ namespace Vistas
                 btnGestionSectores.IsEnabled = true;
                 btnGestionTiposVehiculo.IsEnabled = true;
                 btnGestionClientes.IsEnabled = true;
-                btnVenta.IsEnabled = true;
+                btnGestionUsuarios.IsEnabled = true;
+                btnGestionClientes.IsEnabled = false;
+                btnGestionClientes.Visibility = Visibility.Collapsed;
+                lwCliente.Visibility = Visibility.Collapsed;
+                lwVenta.Visibility = Visibility.Collapsed;
+
+                
             }
             else if (roleName == "operador")
             {
                 // Habilitar funciones de gestión de Clientes y Gestión de Estacionamiento
                 btnGestionClientes.IsEnabled = true;
-                btnVenta.IsEnabled = true;
+                btnGestionSectores.IsEnabled = false;
+                btnGestionTiposVehiculo.IsEnabled = false;
+                btnGestionUsuarios.Visibility = Visibility.Collapsed;
+                lwUser.Visibility = Visibility.Collapsed;
+                btnGestionSectores.Visibility = Visibility.Collapsed;
+                lwSector.Visibility = Visibility.Collapsed;
+                btnGestionTiposVehiculo.Visibility = Visibility.Collapsed;
+                lwVehiculo.Visibility = Visibility.Collapsed;
             }
 
             

@@ -42,7 +42,7 @@ namespace Vistas.Recursos
                 if (!string.IsNullOrEmpty(roleName))
                 {
                     MessageBox.Show("Usuario y contraseña correctos", "INFO", MessageBoxButton.OK);
-                    mostrarPrincipal();
+                    mostrarPrincipal(roleName);
 
                     //main = new Main(roleName);
                     //main.Show();
@@ -85,9 +85,9 @@ namespace Vistas.Recursos
             if (Result == MessageBoxResult.Yes)
                 Application.Current.Shutdown();
         }
-        private void mostrarPrincipal()
+        private void mostrarPrincipal(string role)
         {
-            Bienvenido bienvenido = new Bienvenido(trabajarUsuario.usuario);
+            Bienvenido bienvenido = new Bienvenido(role);
             bienvenido.Show();
         }
     }

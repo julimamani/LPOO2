@@ -128,9 +128,9 @@ namespace Vistas
             user.UserName = txtUsername.Text;
 
             if (cmbRol.SelectedIndex == 0)
-                user.Rol = "Admin";
+                user.Rol = "admin";
             else
-                user.Rol = "Operador";
+                user.Rol = "operador";
 
             return user;
         }
