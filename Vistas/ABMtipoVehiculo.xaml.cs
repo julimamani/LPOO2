@@ -13,6 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ClasesBase;
 using System.Data.SqlClient;
+using Microsoft.Win32;
 
 
 namespace Vistas
@@ -89,6 +90,20 @@ namespace Vistas
                 MessageBox.Show("TODOS LOS CAMPOS DEBEN ESTAR CARGADOS", "Aviso", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
+        private void CargarImagen_Click(object sender, RoutedEventArgs e)
+{
+    OpenFileDialog openFileDialog = new OpenFileDialog();
+    openFileDialog.Filter = "Archivos de imagen|*.jpg;*.jpeg;*.png;*.gif|Todos los archivos|*.*";
+    if (openFileDialog.ShowDialog() == true)
+    {
+        string rutaImagen = openFileDialog.FileName;
+        Imagen_Url.Text = rutaImagen;
+        
+        // Muestra la imagen en el control Image
+        BitmapImage bitmap = new BitmapImage(new Uri(rutaImagen));
+        imgVehiculo.Source = bitmap;
+    }
+}
 
 
         private void ModificarTipoVehiculo_Click(object sender, RoutedEventArgs e)
