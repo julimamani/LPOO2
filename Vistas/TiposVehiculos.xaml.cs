@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -56,6 +56,7 @@ namespace Vistas
                     pageVehiculo.txtDescripcion.Text = vehiculo.Descripcion;
                     pageVehiculo.txtTarifa.Text = vehiculo.Tarifa;
                     pageVehiculo.btnGuardar.IsEnabled = false;
+                    pageVehiculo.Imagen_Url.Text = vehiculo.Imagen;
                     pageVehiculo.btnGuardar.Background = new SolidColorBrush(Colors.Transparent);
                 }
                 else
