@@ -1,8 +1,3 @@
-He analizado el repositorio de GitHub `https://github.com/julimamani/LPOO2.git` y he creado un `README.md` que resume y documenta tu proyecto.
-
-Este `README.md` describe el propósito, las tecnologías utilizadas y los pasos para compilar y ejecutar la aplicación. Puedes copiar y pegar este contenido directamente en la página de tu repositorio en GitHub.
-
------
 
 ### `README.md`
 
